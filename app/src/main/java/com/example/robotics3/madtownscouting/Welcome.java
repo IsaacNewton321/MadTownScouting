@@ -15,8 +15,12 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 public class Welcome extends AppCompatActivity {
-    Button loginButton;
-    Intent intent;
+    Button scoutingButton;
+    Button teamsButton;
+    Button webButton;
+    Intent scoutingIntent;
+    Intent teamIntent;
+    Intent webIntent;
     SQLiteDatabase myDB = null;
     String TeamData = "TeamRoster";
     String MatchData = "MatchScouting";
@@ -27,20 +31,42 @@ public class Welcome extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        loginButton = (Button) findViewById(R.id.signinButton);
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        scoutingButton = (Button) findViewById(R.id.scoutButton);
+        teamsButton = (Button) findViewById(R.id.teamButton);
+        webButton = (Button) findViewById(R.id.websiteButton);
+        scoutingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainMenu();
+                scoutingMenu();
+            }
+        });
+        teamsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                teamsList();
+            }
+        });
+        webButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webMenu();
             }
         });
         createDatabase();
         createMatchScoutingDatabase();
     }
 
-    public void mainMenu() {
-        intent = new Intent(this, MainMenu.class);
-        startActivity(intent);
+    public void scoutingMenu() {
+        scoutingIntent = new Intent(this, MainMenu.class);
+        startActivity(scoutingIntent);
+    }
+    public void teamsList() {
+        teamIntent = new Intent(this, TeamRoster.class);
+        startActivity(teamIntent);
+    }
+    public void webMenu() {
+        webIntent = new Intent(this, .class);
+        startActivity(webIntent);
     }
 
     @Override
