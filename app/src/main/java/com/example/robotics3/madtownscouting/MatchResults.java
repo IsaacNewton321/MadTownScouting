@@ -100,9 +100,8 @@ public class MatchResults extends AppCompatActivity {
             public String climbSuccessful;
             public String robotNotes;
 
-            public void LoadDatabase() {
-                Intent intent = getIntent();
-                matchNumber = intent.getIntExtra("MATCH_NUMBER", 0);
+            public void LoadDatabase(int mNumber) {
+                matchNumber = mNumber;
                 myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
                 c = myDB.rawQuery("SELECT * FROM MatchScouting WHERE matchtype_number =" + matchNumber, null);
                 c.moveToFirst();
@@ -228,7 +227,7 @@ public class MatchResults extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_results);
-
+        MatchScouting = new ScoutingData();
         myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
         c1 = myDB.rawQuery("SELECT * FROM MatchScouting", null);
         int i = c1.getCount();
@@ -237,6 +236,20 @@ public class MatchResults extends AppCompatActivity {
                 lv = (ListView) findViewById(R.id.matchresultslistView);
                 matchAdapter = new MatchResultsAdapter(MatchResults.this, c1, 0);
                 lv.setAdapter(matchAdapter);
+                lv.setOnItemClickListener(new OnItemClickListener() 
+    {
+        public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) 
+        {
+            String mNumber;
+            Cursor cur = (Cursor) matchAdapter.getItem(position);
+            cur.moveToPosition(position);
+            // Identifies the match number of the list component that you clicked, and prepares 
+            // the values of the ScoutingData instance with the data from that list component
+            // so that when you click the send data button it will send the data from the match that you have last clicked on
+            mNumber = cur.getString(cur.getColumnIndexOrThrow("matchtype_number"));
+            MatchScouting.LoadDatabase(mNumber);
+        }
+    });
             }catch(Exception e){
                 Log.d("ERROR",e.toString());
             }
@@ -248,7 +261,9 @@ public class MatchResults extends AppCompatActivity {
         preparedata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MatchScouting.LoadDatabase();
+                Intent intent = getIntent();
+                matchNumber = intent.getIntExtra("MATCH_NUMBER", 0);
+                MatchScouting.LoadDatabase(matchNumber);
             }
         });
         senddata.setOnClickListener(new View.OnClickListener() {
