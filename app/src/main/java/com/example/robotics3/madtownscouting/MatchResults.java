@@ -101,9 +101,8 @@ public class MatchResults extends AppCompatActivity {
             public String robotNotes;
 
             public void LoadDatabase(int mNumber) {
-                matchNumber = mNumber;
                 myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
-                c = myDB.rawQuery("SELECT * FROM MatchScouting WHERE matchtype_number =" + matchNumber, null);
+                c = myDB.rawQuery("SELECT * FROM MatchScouting WHERE matchtype_number =" + mNumber, null);
                 c.moveToFirst();
                 int i = c.getCount();
                 if (i > 0) {
@@ -241,13 +240,15 @@ public class MatchResults extends AppCompatActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) 
         {
             String mNumber;
+            int matchInt;
             Cursor cur = (Cursor) matchAdapter.getItem(position);
             cur.moveToPosition(position);
             // Identifies the match number of the list component that you clicked, and prepares 
             // the values of the ScoutingData instance with the data from that list component
             // so that when you click the send data button it will send the data from the match that you have last clicked on
             mNumber = cur.getString(cur.getColumnIndexOrThrow("matchtype_number"));
-            MatchScouting.LoadDatabase(mNumber);
+            matchInt = Integer.valueOf(mNumber);
+            MatchScouting.LoadDatabase(matchInt);
         }
     });
             }catch(Exception e){
