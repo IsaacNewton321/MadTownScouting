@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Welcome to MadTown Robotics Scouting App.</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main_menu">Main Menu</string>
+    <string name="title_activity_ScoutingMenu">ScoutingMenu</string>
+    <string name="title_activity_team_roster">TeamRoster</string>
+    <string name="title_activity_game_roster">GameRoster</string>
+    <string name="title_activity_events_roster">EventsRoster</string>
+    <string name="title_activity_organization">Organization</string>
+    <string name="title_activity_team_knowledge">TeamKnowledge</string>
+    <string name="title_activity_preparation">Preparation</string>
+    <string name="title_activity_autonomous_period">AutonomousPeriod</string>
+    <string name="title_activity_teleop_period">TeleopPeriod</string>
+    <string name="title_activity_driver_ability">DriverAbility</string>
+    <string name="title_activity_accuracy_precision">AccuracyPrecision</string>
+    <string name="title_activity_human_player_ability">HumanPlayerAbility</string>
+    <string name="title_activity_tower_damage">TowerDamage</string>
+    <string name="title_activity_climbing_activity">ClimbingAbility</string>
+</resources>

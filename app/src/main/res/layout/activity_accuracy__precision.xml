@@ -1,0 +1,1199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.robotics3.madtownscouting.Accuracy_Precision">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Shots Fired:"
+        android:id="@+id/accuracydetail1Text"
+        android:layout_below="@+id/accuracymetricsText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="50dip"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increaseshotsamountButton"
+        android:minWidth="10dip"
+        android:minHeight="50dip"
+        android:layout_below="@+id/accuracydetail1Text"
+        android:layout_toLeftOf="@+id/climbspeedvalueText"
+        android:layout_toStartOf="@+id/climbspeedvalueText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/shotsamountValueText"
+        android:layout_alignBottom="@+id/increaseshotsamountButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreaseshotsamountButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:layout_alignBottom="@+id/shotsamountValueText"
+        android:layout_toRightOf="@+id/lowgoalsscoredText"
+        android:layout_toEndOf="@+id/lowgoalsscoredText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Shots Scored:"
+        android:id="@+id/accuracydetail2Text"
+        android:layout_below="@+id/increaseshotsamountButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increaseshotsscoredButton"
+        android:minWidth="50dip"
+        android:minHeight="50dip"
+        android:layout_alignBottom="@+id/shotsscoredValueText"
+        android:layout_alignLeft="@+id/increaseshotsamountButton"
+        android:layout_alignStart="@+id/increaseshotsamountButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/shotsscoredValueText"
+        android:layout_alignBottom="@+id/decreaseshotsscoredButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreaseshotsscoredButton"
+        android:minWidth="50dip"
+        android:minHeight="50dip"
+        android:layout_below="@+id/accuracydetail2Text"
+        android:layout_alignLeft="@+id/decreaseshotsamountButton"
+        android:layout_alignStart="@+id/decreaseshotsamountButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="/"
+        android:id="@+id/outoftotalshotValueText"
+        android:minWidth="5dip"
+        android:layout_alignTop="@+id/totalshotsamountValueText"
+        android:layout_toRightOf="@+id/shotsscoredValueText"
+        android:layout_toEndOf="@+id/shotsscoredValueText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/totalshotsamountValueText"
+        android:minWidth="5dip"
+        android:layout_alignBottom="@+id/decreaseshotsscoredButton"
+        android:layout_toRightOf="@+id/outoftotalshotValueText"
+        android:layout_toEndOf="@+id/outoftotalshotValueText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Low Goals Scored:"
+        android:id="@+id/accuracydetail3Text"
+        android:layout_below="@+id/increaseshotsscoredButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increaselowgoalsscoredButton"
+        android:minWidth="50dip"
+        android:minHeight="50dip"
+        android:layout_below="@+id/accuracydetail3Text"
+        android:layout_alignLeft="@+id/increaseshotsscoredButton"
+        android:layout_alignStart="@+id/increaseshotsscoredButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/lowgoalsscoredText"
+        android:minWidth="50dip"
+        android:layout_alignBottom="@+id/decreaselowgoalsscoredButton"
+        android:layout_toRightOf="@+id/increaselowgoalsscoredButton"
+        android:layout_toEndOf="@+id/increaselowgoalsscoredButton" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreaselowgoalsscoredButton"
+        android:minWidth="50dip"
+        android:minHeight="50dip"
+        android:layout_alignTop="@+id/increaselowgoalsscoredButton"
+        android:layout_alignLeft="@+id/decreaseshotsscoredButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Defenses Crossed:"
+        android:id="@+id/defensecrosseddetail1Text"
+        android:layout_below="@+id/defensesmetricsText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Low Bar Crossed (Easy)"
+        android:id="@+id/lowbarcrossedText"
+        android:layout_below="@+id/defensecrosseddetail1Text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/increaselowbareasycrossesButton"
+        android:layout_below="@+id/lowbarcrossedText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="+"
+        android:minWidth="50dip"
+        android:minHeight="50dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/lowbareasycrossedValueText"
+        android:minWidth="30dip"
+        android:minHeight="25dip"
+        android:layout_alignBottom="@+id/increaselowbareasycrossesButton"
+        android:layout_alignRight="@+id/accuracymetricsText"
+        android:layout_alignEnd="@+id/accuracymetricsText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreaselowbareasycrossesButton"
+        android:minWidth="50dip"
+        android:minHeight="50dip"
+        android:layout_above="@+id/portculliscrossedText"
+        android:layout_alignRight="@+id/accuracydetail3Text"
+        android:layout_alignEnd="@+id/accuracydetail3Text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="(Hard)"
+        android:id="@+id/lowbarcrossedhardText"
+        android:layout_above="@+id/increaselowbarhardcrossesButton"
+        android:layout_toRightOf="@+id/drawbridgecrossedText"
+        android:layout_toEndOf="@+id/drawbridgecrossedText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreaseportcullishardcrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:layout_alignBottom="@+id/portcullishardcrossedValueText"
+        android:layout_alignLeft="@+id/decreasemoathardcrossesButton"
+        android:layout_alignStart="@+id/decreasemoathardcrossesButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/rampartshardcrossedValuetext"
+        android:minHeight="25dip"
+        android:minWidth="35dip"
+        android:layout_alignBottom="@+id/increaserampartshardcrossesButton"
+        android:layout_alignLeft="@+id/chevaldefrisehardcrossedValueText"
+        android:layout_alignStart="@+id/chevaldefrisehardcrossedValueText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreasemoathardcrossesButton"
+        android:layout_alignTop="@+id/increasemoathardcrossesButton"
+        android:layout_alignLeft="@+id/decreaselowbarhardcrossesButton"
+        android:layout_alignStart="@+id/decreaselowbarhardcrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Moat Crossed (Easy)"
+        android:id="@+id/moatcrossedText"
+        android:layout_below="@+id/increaseportculliseasycrossesButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/chevaldefrisehardcrossedValueText"
+        android:minHeight="25dip"
+        android:minWidth="35dip"
+        android:layout_alignBottom="@+id/increasechevaldefrisehardcrossesButton"
+        android:layout_toRightOf="@+id/increasechevaldefrisehardcrossesButton"
+        android:layout_toEndOf="@+id/increasechevaldefrisehardcrossesButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="(Hard)"
+        android:id="@+id/moathardcrossedText"
+        android:layout_above="@+id/increasemoathardcrossesButton"
+        android:layout_alignLeft="@+id/increasemoathardcrossesButton"
+        android:layout_alignStart="@+id/increasemoathardcrossesButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="(Hard)"
+        android:id="@+id/chevaldefrisehardcrossedText"
+        android:layout_above="@+id/increasechevaldefrisehardcrossesButton"
+        android:layout_toRightOf="@+id/rampartscrossedText"
+        android:layout_toEndOf="@+id/rampartscrossedText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increasemoateasycrossesButton"
+        android:layout_below="@+id/moatcrossedText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:minHeight="50dip"
+        android:minWidth="50dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="CDF Crossed (Easy)"
+        android:id="@+id/chivaldefrisecrossedText"
+        android:layout_alignTop="@+id/portcullishardcrossedText"
+        android:layout_alignLeft="@+id/shotsscoredValueText"
+        android:layout_alignStart="@+id/shotsscoredValueText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/portculliseasycrossedValueText"
+        android:minWidth="35dip"
+        android:minHeight="25dip"
+        android:layout_alignBottom="@+id/increaseportculliseasycrossesButton"
+        android:layout_toLeftOf="@+id/decreaselowbareasycrossesButton"
+        android:layout_toStartOf="@+id/decreaselowbareasycrossesButton" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreaselowbarhardcrossesButton"
+        android:minWidth="50dip"
+        android:minHeight="50dip"
+        android:layout_above="@+id/chivaldefrisecrossedText"
+        android:layout_toLeftOf="@+id/lowgoalsscoredText"
+        android:layout_toStartOf="@+id/lowgoalsscoredText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/moateasycrossedValueText"
+        android:minHeight="25dip"
+        android:minWidth="35dip"
+        android:layout_alignBottom="@+id/increasemoateasycrossesButton"
+        android:layout_alignLeft="@+id/portculliseasycrossedValueText"
+        android:layout_alignStart="@+id/portculliseasycrossedValueText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="(Hard)"
+        android:id="@+id/rampartshardcrossedText"
+        android:layout_below="@+id/increasechevaldefrisehardcrossesButton"
+        android:layout_alignLeft="@+id/increasechevaldefrisehardcrossesButton"
+        android:layout_alignStart="@+id/increasechevaldefrisehardcrossesButton" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increaserampartshardcrossesButton"
+        android:layout_below="@+id/rampartshardcrossedText"
+        android:layout_alignLeft="@+id/rampartshardcrossedText"
+        android:layout_alignStart="@+id/rampartshardcrossedText"
+        android:minHeight="50dip"
+        android:minWidth="50dip" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increasechevaldefrisehardcrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:layout_above="@+id/rampartscrossedText"
+        android:layout_alignLeft="@+id/chevaldefrisehardcrossedText"
+        android:layout_alignStart="@+id/chevaldefrisehardcrossedText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Portcullis Crossed (Easy)"
+        android:id="@+id/portculliscrossedText"
+        android:layout_below="@+id/increaselowbareasycrossesButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreasechevaldefrisehardcrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:layout_alignBottom="@+id/chevaldefrisehardcrossedValueText"
+        android:layout_toRightOf="@+id/chevaldefrisehardcrossedValueText"
+        android:layout_toEndOf="@+id/chevaldefrisehardcrossedValueText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increasemoathardcrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:layout_above="@+id/drawbridgehardcrossedText"
+        android:layout_alignLeft="@+id/increaseportcullishardcrossesButton"
+        android:layout_alignStart="@+id/increaseportcullishardcrossesButton" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increaselowbarhardcrossesButton"
+        android:minWidth="50dip"
+        android:minHeight="50dip"
+        android:layout_above="@+id/portcullishardcrossedText"
+        android:layout_alignLeft="@+id/lowbarcrossedhardText"
+        android:layout_alignStart="@+id/lowbarcrossedhardText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/rampartseasycrossedValueText"
+        android:minHeight="25dip"
+        android:minWidth="35dip"
+        android:layout_above="@+id/sallyportcrossedText"
+        android:layout_alignLeft="@+id/chevaldefriseeasycrossedValueText"
+        android:layout_alignStart="@+id/chevaldefriseeasycrossedValueText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increaseportculliseasycrossesButton"
+        android:layout_below="@+id/portculliscrossedText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:minHeight="50dip"
+        android:minWidth="50dip" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increaserampartseasycrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:layout_below="@+id/rampartscrossedText"
+        android:layout_alignLeft="@+id/rampartscrossedText"
+        android:layout_alignStart="@+id/rampartscrossedText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/portcullishardcrossedValueText"
+        android:minHeight="25dip"
+        android:minWidth="35dip"
+        android:layout_alignBottom="@+id/increaseportcullishardcrossesButton"
+        android:layout_alignLeft="@+id/lowbarhardcrossedValueText"
+        android:layout_alignStart="@+id/lowbarhardcrossedValueText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreasechevaldefriseeasycrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:nestedScrollingEnabled="false"
+        android:layout_alignBottom="@+id/chevaldefriseeasycrossedValueText"
+        android:layout_toRightOf="@+id/robotchallengenoButton"
+        android:layout_toEndOf="@+id/robotchallengenoButton" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreaserampartseasycrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:layout_below="@+id/rampartscrossedText"
+        android:layout_alignLeft="@+id/decreasechevaldefriseeasycrossesButton"
+        android:layout_alignStart="@+id/decreasechevaldefriseeasycrossesButton" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreaseportculliseasycrossesButton"
+        android:layout_below="@+id/portculliscrossedText"
+        android:layout_alignLeft="@+id/decreaselowbareasycrossesButton"
+        android:layout_alignStart="@+id/decreaselowbareasycrossesButton"
+        android:minWidth="50dip"
+        android:minHeight="50dip" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreaserampartshardcrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:layout_above="@+id/sallyporthardcrossedText"
+        android:layout_toRightOf="@+id/rampartshardcrossedValuetext"
+        android:layout_toEndOf="@+id/rampartshardcrossedValuetext" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increaseportcullishardcrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:layout_above="@+id/moathardcrossedText"
+        android:layout_alignLeft="@+id/portcullishardcrossedText"
+        android:layout_alignStart="@+id/portcullishardcrossedText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Ramparts Crossed (Easy)"
+        android:id="@+id/rampartscrossedText"
+        android:layout_above="@+id/decreasemoathardcrossesButton"
+        android:layout_alignLeft="@+id/increasechevaldefriseeasycrossesButton"
+        android:layout_alignStart="@+id/increasechevaldefriseeasycrossesButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/moathardcrossedValueText"
+        android:minHeight="25dip"
+        android:minWidth="35dip"
+        android:layout_alignBottom="@+id/increasemoathardcrossesButton"
+        android:layout_toRightOf="@+id/increasemoathardcrossesButton"
+        android:layout_toEndOf="@+id/increasemoathardcrossesButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="(Hard)"
+        android:id="@+id/portcullishardcrossedText"
+        android:layout_alignTop="@+id/portculliscrossedText"
+        android:layout_alignLeft="@+id/increaselowbarhardcrossesButton"
+        android:layout_alignStart="@+id/increaselowbarhardcrossesButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/lowbarhardcrossedValueText"
+        android:minWidth="35dip"
+        android:minHeight="25dip"
+        android:layout_alignBottom="@+id/increaselowbarhardcrossesButton"
+        android:layout_toRightOf="@+id/increaselowbarhardcrossesButton"
+        android:layout_toEndOf="@+id/increaselowbarhardcrossesButton" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increasechevaldefriseeasycrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:layout_below="@+id/portcullishardcrossedText"
+        android:layout_alignLeft="@+id/chivaldefrisecrossedText"
+        android:layout_alignStart="@+id/chivaldefrisecrossedText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreasemoateasycrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:nestedScrollingEnabled="false"
+        android:layout_below="@+id/moatcrossedText"
+        android:layout_alignLeft="@+id/decreaseportculliseasycrossesButton"
+        android:layout_alignStart="@+id/decreaseportculliseasycrossesButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/chevaldefriseeasycrossedValueText"
+        android:minWidth="35dip"
+        android:minHeight="25dip"
+        android:layout_alignBottom="@+id/increasechevaldefriseeasycrossesButton"
+        android:layout_toRightOf="@+id/increasechevaldefriseeasycrossesButton"
+        android:layout_toEndOf="@+id/increasechevaldefriseeasycrossesButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Drawbridge Crossed (Easy)"
+        android:id="@+id/drawbridgecrossedText"
+        android:layout_below="@+id/increasemoateasycrossesButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increasedrawbridgeeasycrossesButton"
+        android:layout_below="@+id/drawbridgecrossedText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:minHeight="50dip"
+        android:minWidth="50dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/drawbridgeeasycrossedValueText"
+        android:minHeight="25dip"
+        android:minWidth="35dip"
+        android:layout_alignBottom="@+id/increasedrawbridgeeasycrossesButton"
+        android:layout_alignLeft="@+id/moateasycrossedValueText"
+        android:layout_alignStart="@+id/moateasycrossedValueText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreasedrawbridgeeasycrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:layout_below="@+id/drawbridgecrossedText"
+        android:layout_alignLeft="@+id/decreasemoateasycrossesButton"
+        android:layout_alignStart="@+id/decreasemoateasycrossesButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="(Hard)"
+        android:id="@+id/drawbridgehardcrossedText"
+        android:layout_alignTop="@+id/drawbridgecrossedText"
+        android:layout_alignLeft="@+id/increasemoathardcrossesButton"
+        android:layout_alignStart="@+id/increasemoathardcrossesButton" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increasedrawbridgehardcrossesButton"
+        android:layout_below="@+id/drawbridgehardcrossedText"
+        android:layout_alignLeft="@+id/drawbridgehardcrossedText"
+        android:layout_alignStart="@+id/drawbridgehardcrossedText"
+        android:minHeight="50dip"
+        android:minWidth="50dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/drawbridgehardcrossedValueText"
+        android:minHeight="25dip"
+        android:minWidth="35dip"
+        android:layout_alignTop="@+id/drawbridgeeasycrossedValueText"
+        android:layout_alignLeft="@+id/moathardcrossedValueText"
+        android:layout_alignStart="@+id/moathardcrossedValueText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreasedrawbridgehardcrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:layout_alignBottom="@+id/drawbridgehardcrossedValueText"
+        android:layout_alignLeft="@+id/decreasemoathardcrossesButton"
+        android:layout_alignStart="@+id/decreasemoathardcrossesButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Sallyport Crossed (Easy)"
+        android:id="@+id/sallyportcrossedText"
+        android:layout_alignTop="@+id/drawbridgehardcrossedText"
+        android:layout_alignLeft="@+id/increaserampartseasycrossesButton"
+        android:layout_alignStart="@+id/increaserampartseasycrossesButton" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increasesallyporteasycrossesButton"
+        android:layout_below="@+id/sallyportcrossedText"
+        android:layout_alignLeft="@+id/sallyportcrossedText"
+        android:layout_alignStart="@+id/sallyportcrossedText"
+        android:minHeight="50dip"
+        android:minWidth="50dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/sallyporteasycrossedValueText"
+        android:minHeight="25dip"
+        android:minWidth="35dip"
+        android:layout_alignBottom="@+id/increasesallyporteasycrossesButton"
+        android:layout_alignLeft="@+id/rampartseasycrossedValueText"
+        android:layout_alignStart="@+id/rampartseasycrossedValueText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreasesallyporteasycrossesButton"
+        android:layout_below="@+id/sallyportcrossedText"
+        android:layout_alignLeft="@+id/decreaserampartseasycrossesButton"
+        android:layout_alignStart="@+id/decreaserampartseasycrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="(Hard)"
+        android:id="@+id/sallyporthardcrossedText"
+        android:layout_below="@+id/increaserampartshardcrossesButton"
+        android:layout_alignLeft="@+id/increaserampartshardcrossesButton"
+        android:layout_alignStart="@+id/increaserampartshardcrossesButton" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increasesallyporthardcrossesButton"
+        android:layout_below="@+id/sallyporthardcrossedText"
+        android:layout_alignLeft="@+id/sallyporthardcrossedText"
+        android:layout_alignStart="@+id/sallyporthardcrossedText"
+        android:minHeight="50dip"
+        android:minWidth="50dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/sallyporthardcrossedValueText"
+        android:minHeight="25dip"
+        android:minWidth="35dip"
+        android:layout_alignBottom="@+id/increasesallyporthardcrossesButton"
+        android:layout_alignLeft="@+id/rampartshardcrossedValuetext"
+        android:layout_alignStart="@+id/rampartshardcrossedValuetext" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreasesallyporthardcrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:layout_above="@+id/roughterrainhardcrossedText"
+        android:layout_toRightOf="@+id/sallyporthardcrossedValueText"
+        android:layout_toEndOf="@+id/sallyporthardcrossedValueText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Rockwall Crossed (Easy)"
+        android:id="@+id/rockwallcrossedText"
+        android:layout_below="@+id/increasedrawbridgeeasycrossesButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increaserockwalleasycrossedButton"
+        android:layout_below="@+id/rockwallcrossedText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:minHeight="50dip"
+        android:minWidth="50dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/rockwalleasycrossedValueText"
+        android:minHeight="25dip"
+        android:minWidth="35dip"
+        android:layout_alignBottom="@+id/increaserockwalleasycrossedButton"
+        android:layout_alignLeft="@+id/drawbridgeeasycrossedValueText"
+        android:layout_alignStart="@+id/drawbridgeeasycrossedValueText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="(Hard)"
+        android:id="@+id/rockwallhardcrossedText"
+        android:layout_below="@+id/increasedrawbridgehardcrossesButton"
+        android:layout_alignLeft="@+id/increasedrawbridgehardcrossesButton"
+        android:layout_alignStart="@+id/increasedrawbridgehardcrossesButton" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreaserockwalleasycrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:layout_alignBottom="@+id/decreaseroughterraineasycrossesButton"
+        android:layout_alignLeft="@+id/decreasedrawbridgeeasycrossesButton"
+        android:layout_alignStart="@+id/decreasedrawbridgeeasycrossesButton" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increaserockwallhardcrossesButton"
+        android:layout_below="@+id/rockwallhardcrossedText"
+        android:layout_alignLeft="@+id/rockwallhardcrossedText"
+        android:layout_alignStart="@+id/rockwallhardcrossedText"
+        android:minHeight="50dip"
+        android:minWidth="50dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/rockwallhardcrossedValueText"
+        android:minHeight="25dip"
+        android:minWidth="35dip"
+        android:layout_alignBottom="@+id/increaserockwallhardcrossesButton"
+        android:layout_alignLeft="@+id/drawbridgehardcrossedValueText"
+        android:layout_alignStart="@+id/drawbridgehardcrossedValueText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreaserockwallhardcrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:layout_above="@+id/climbingmetricsText"
+        android:layout_alignLeft="@+id/decreasemoathardcrossesButton"
+        android:layout_alignStart="@+id/decreasemoathardcrossesButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Rough Terrain (Easy)"
+        android:id="@+id/roughterraincrossedText"
+        android:layout_below="@+id/increasesallyporteasycrossesButton"
+        android:layout_alignLeft="@+id/increasesallyporteasycrossesButton"
+        android:layout_alignStart="@+id/increasesallyporteasycrossesButton" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increaseroughterraineasycrossesButton"
+        android:layout_below="@+id/roughterraincrossedText"
+        android:layout_alignLeft="@+id/roughterraincrossedText"
+        android:layout_alignStart="@+id/roughterraincrossedText"
+        android:minHeight="50dip"
+        android:minWidth="50dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/roughterraineasycrossedValueText"
+        android:minHeight="25dip"
+        android:minWidth="35dip"
+        android:layout_alignBottom="@+id/increaseroughterraineasycrossesButton"
+        android:layout_alignLeft="@+id/sallyporteasycrossedValueText"
+        android:layout_alignStart="@+id/sallyporteasycrossedValueText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreaseroughterraineasycrossesButton"
+        android:layout_below="@+id/roughterraincrossedText"
+        android:layout_alignLeft="@+id/decreasesallyporteasycrossesButton"
+        android:layout_alignStart="@+id/decreasesallyporteasycrossesButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="(Hard)"
+        android:id="@+id/roughterrainhardcrossedText"
+        android:layout_below="@+id/increasesallyporthardcrossesButton"
+        android:layout_alignLeft="@+id/increasesallyporthardcrossesButton"
+        android:layout_alignStart="@+id/increasesallyporthardcrossesButton" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/increaseroughterrainhardcrossesButton"
+        android:layout_below="@+id/roughterrainhardcrossedText"
+        android:layout_alignLeft="@+id/roughterrainhardcrossedText"
+        android:layout_alignStart="@+id/roughterrainhardcrossedText"
+        android:minHeight="50dip"
+        android:minWidth="50dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/roughterrainhardcrossedValueText"
+        android:minHeight="25dip"
+        android:minWidth="35dip"
+        android:layout_alignBottom="@+id/increaseroughterrainhardcrossesButton"
+        android:layout_alignLeft="@+id/sallyporthardcrossedValueText"
+        android:layout_alignStart="@+id/sallyporthardcrossedValueText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/decreaseroughterrainhardcrossesButton"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:layout_above="@+id/climbingmetricsText"
+        android:layout_toRightOf="@+id/roughterrainhardcrossedValueText"
+        android:layout_toEndOf="@+id/roughterrainhardcrossedValueText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="*Accuracy*"
+        android:id="@+id/accuracymetricsText"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="*Defenses Crossed*"
+        android:id="@+id/defensesmetricsText"
+        android:layout_marginTop="73dp"
+        android:layout_below="@+id/outoftotalshotValueText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="*Climbing*"
+        android:id="@+id/climbingmetricsText"
+        android:layout_below="@+id/increaserockwalleasycrossedButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Did the robot challenge the tower?"
+        android:id="@+id/robotchallengeText"
+        android:layout_below="@+id/climbingmetricsText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        android:id="@+id/robotchallengeyesButton"
+        android:minWidth="50dip"
+        android:maxHeight="50dip"
+        android:layout_below="@+id/robotchallengeText"
+        android:layout_toRightOf="@+id/robotchallengeText"
+        android:layout_toEndOf="@+id/robotchallengeText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"
+        android:id="@+id/robotchallengenoButton"
+        android:layout_alignTop="@+id/robotchallengeyesButton"
+        android:layout_alignLeft="@+id/robotclimbnoButton"
+        android:layout_alignStart="@+id/robotclimbnoButton"
+        android:maxHeight="50dip"
+        android:minWidth="50dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Can the robot climb?"
+        android:id="@+id/climdetail1Text"
+        android:layout_below="@+id/robotchallengeyesButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        android:id="@+id/robotclimbyesButton"
+        android:maxHeight="50dip"
+        android:minWidth="50dip"
+        android:nestedScrollingEnabled="false"
+        android:layout_below="@+id/climdetail1Text"
+        android:layout_toRightOf="@+id/robotchallengeText"
+        android:layout_toEndOf="@+id/robotchallengeText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"
+        android:id="@+id/robotclimbnoButton"
+        android:layout_alignTop="@+id/robotclimbyesButton"
+        android:layout_toRightOf="@+id/totalshotsamountValueText"
+        android:layout_toEndOf="@+id/totalshotsamountValueText"
+        android:maxHeight="50dip"
+        android:minWidth="50dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Climb Speed (seconds):"
+        android:id="@+id/climbdetail2Text"
+        android:layout_below="@+id/robotclimbyesButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/climbspeedseekBar"
+        android:minWidth="300dip"
+        android:max="10"
+        android:layout_below="@+id/climbdetail2Text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/climbspeedvalueText"
+        android:minWidth="10dip"
+        android:layout_alignBottom="@+id/climbspeedseekBar"
+        android:layout_toLeftOf="@+id/shotsscoredValueText"
+        android:layout_toStartOf="@+id/shotsscoredValueText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Did it climb succesfully?"
+        android:id="@+id/climbdetail3Text"
+        android:layout_below="@+id/climbspeedseekBar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Data"
+        android:id="@+id/enteraccuracy_precisiondataButton"
+        android:layout_below="@+id/robotmatchnotesText"
+        android:layout_toRightOf="@+id/decreaselowgoalsscoredButton"
+        android:layout_toEndOf="@+id/decreaselowgoalsscoredButton" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        android:id="@+id/climbsuccesyesButton"
+        android:layout_below="@+id/climbdetail3Text"
+        android:layout_alignLeft="@+id/increaseshotsscoredButton"
+        android:layout_alignStart="@+id/increaseshotsscoredButton"
+        android:maxHeight="50dip"
+        android:minWidth="50dip" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"
+        android:id="@+id/climbsuccesnoButton"
+        android:layout_alignTop="@+id/climbsuccesyesButton"
+        android:layout_alignLeft="@+id/robotclimbnoButton"
+        android:layout_alignStart="@+id/robotclimbnoButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Robot Notes:"
+        android:id="@+id/robotnotesmetricText"
+        android:layout_below="@+id/climbsuccesyesButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/robotmatchnotesText"
+        android:hint="What happened during the match?"
+        android:layout_below="@+id/robotnotesmetricText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>
+</ScrollView>

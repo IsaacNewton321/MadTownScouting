@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.robotics3.madtownscouting.AutonomousPeriod">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Did it activate during Auto Period?"
+        android:id="@+id/autoperiodquestion1Text"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes, it activated."
+        android:id="@+id/activeautoperiodcheckBox"
+        android:layout_below="@+id/autoperiodquestion1Text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Did it breach a defense?"
+        android:id="@+id/autoperiodquestion2Text"
+        android:visibility="visible"
+        android:layout_below="@+id/spybotstartcheckBox"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        android:id="@+id/breachyesButton"
+        android:visibility="visible"
+        android:layout_alignTop="@+id/breachnoButton"
+        android:layout_toLeftOf="@+id/enterautoDataButton"
+        android:layout_toStartOf="@+id/enterautoDataButton" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"
+        android:id="@+id/breachnoButton"
+        android:visibility="visible"
+        android:layout_below="@+id/autoperiodquestion2Text"
+        android:layout_toRightOf="@+id/enterautoDataButton"
+        android:layout_toEndOf="@+id/enterautoDataButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Did it score a High Goal?"
+        android:id="@+id/autoperiodquestion4Text"
+        android:layout_below="@+id/autorockwallcheckBox"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        android:id="@+id/highgoalyesButton"
+        android:layout_below="@+id/autoperiodquestion4Text"
+        android:layout_alignRight="@+id/automoatcheckBox"
+        android:layout_alignEnd="@+id/automoatcheckBox" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"
+        android:id="@+id/highgoalnoButton"
+        android:layout_below="@+id/autoperiodquestion4Text"
+        android:layout_alignLeft="@+id/autoroughterraincheckBox"
+        android:layout_alignStart="@+id/autoroughterraincheckBox" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Data"
+        android:id="@+id/enterautoDataButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Did robot start as a Spybot?"
+        android:id="@+id/autostartingpositionText"
+        android:layout_below="@+id/activeautoperiodcheckBox"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes, it was a Spybot"
+        android:id="@+id/spybotstartcheckBox"
+        android:layout_below="@+id/autostartingpositionText"
+        android:layout_alignLeft="@+id/activeautoperiodcheckBox"
+        android:layout_alignStart="@+id/activeautoperiodcheckBox" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Which defense did it cross?"
+        android:id="@+id/autoperiodquestion3Text"
+        android:layout_below="@+id/breachyesButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Low Bar"
+        android:id="@+id/autolowbarcheckBox"
+        android:layout_below="@+id/autoperiodquestion3Text"
+        android:layout_centerHorizontal="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Portcullis"
+        android:id="@+id/autoportcullischeckBox"
+        android:layout_below="@+id/autolowbarcheckBox"
+        android:layout_toLeftOf="@+id/autolowbarcheckBox"
+        android:layout_toStartOf="@+id/autolowbarcheckBox" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cheval De Frise"
+        android:id="@+id/autochevaldefrisecheckBox"
+        android:layout_below="@+id/autolowbarcheckBox"
+        android:layout_toRightOf="@+id/enterautoDataButton"
+        android:layout_toEndOf="@+id/enterautoDataButton" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Moat"
+        android:id="@+id/automoatcheckBox"
+        android:layout_below="@+id/autoportcullischeckBox"
+        android:layout_alignLeft="@+id/autoportcullischeckBox"
+        android:layout_alignStart="@+id/autoportcullischeckBox" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ramparts"
+        android:id="@+id/autorampartscheckBox"
+        android:layout_below="@+id/autochevaldefrisecheckBox"
+        android:layout_alignLeft="@+id/autochevaldefrisecheckBox"
+        android:layout_alignStart="@+id/autochevaldefrisecheckBox" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Drawbridge"
+        android:id="@+id/autodrawbridgecheckBox"
+        android:layout_below="@+id/automoatcheckBox"
+        android:layout_alignLeft="@+id/automoatcheckBox"
+        android:layout_alignStart="@+id/automoatcheckBox" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sallyport"
+        android:id="@+id/autosallyportcheckBox"
+        android:layout_below="@+id/autorampartscheckBox"
+        android:layout_alignLeft="@+id/autorampartscheckBox"
+        android:layout_alignStart="@+id/autorampartscheckBox" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rockwall"
+        android:id="@+id/autorockwallcheckBox"
+        android:layout_below="@+id/autodrawbridgecheckBox"
+        android:layout_alignLeft="@+id/autodrawbridgecheckBox"
+        android:layout_alignStart="@+id/autodrawbridgecheckBox" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rough Terrain"
+        android:id="@+id/autoroughterraincheckBox"
+        android:layout_below="@+id/autosallyportcheckBox"
+        android:layout_alignLeft="@+id/autosallyportcheckBox"
+        android:layout_alignStart="@+id/autosallyportcheckBox" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Did it score a Low Goal?"
+        android:id="@+id/autoperiodquestion5Text"
+        android:layout_below="@+id/highgoalyesButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        android:id="@+id/lowgoalyesButton"
+        android:layout_below="@+id/autoperiodquestion5Text"
+        android:layout_alignLeft="@+id/highgoalyesButton"
+        android:layout_alignStart="@+id/highgoalyesButton" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"
+        android:id="@+id/lowgoalnoButton"
+        android:layout_alignTop="@+id/lowgoalyesButton"
+        android:layout_alignLeft="@+id/highgoalnoButton"
+        android:layout_alignStart="@+id/highgoalnoButton" />
+
+</RelativeLayout>
+</ScrollView>

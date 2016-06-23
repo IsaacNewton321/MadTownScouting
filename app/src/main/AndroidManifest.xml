@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.robotics3.madtownscouting">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/madtown_robotics"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Welcome"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainMenu"
+            android:label="MainMenu"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ScoutingMenu"
+            android:label="ScoutingMenu"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape"
+            />
+        <activity android:name=".GameRoster" />
+        android:label="@string/title_activity_game_roster" />
+        <activity android:name=".EventsRoster" />
+        android:label="@string/title_activity_events_roster" />
+        <activity android:name=".AutonomousPeriod"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape"
+            />
+        <activity android:name=".Accuracy_Precision"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape"
+            />
+        <activity android:name=".MatchResults" />
+        <activity android:name=".SelectTeam" />
+        <activity android:name=".TeamRoster" />
+    </application>
+
+</manifest>

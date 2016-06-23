@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.robotics3.madtownscouting.SelectTeam">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter New Team:"
+        android:id="@+id/enternewteamText"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/enternewteamnameText"
+        android:hint="Team Name"
+        android:layout_below="@+id/enternewteamText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="25dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/enternewteamnumberText"
+        android:enabled="true"
+        android:hint="Team Number"
+        android:layout_below="@+id/enternewteamnameText"
+        android:layout_alignLeft="@+id/enternewteamnameText"
+        android:layout_alignStart="@+id/enternewteamnameText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:id="@+id/scoutnewteamButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/entermatchtype_numberText"
+        android:hint="Match Number"
+        android:layout_below="@+id/enternewteamnumberText"
+        android:layout_alignLeft="@+id/enternewteamnumberText"
+        android:layout_alignStart="@+id/enternewteamnumberText"
+        android:inputType="number"
+        android:layout_alignRight="@+id/enternewteamnumberText"
+        android:layout_alignEnd="@+id/enternewteamnumberText" />
+
+</RelativeLayout>
