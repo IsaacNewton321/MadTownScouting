@@ -103,6 +103,7 @@ public class MatchResults extends AppCompatActivity {
             public void LoadDatabase(int mNumber) {
                 myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
                 c = myDB.rawQuery("SELECT * FROM MatchScouting WHERE matchtype_number =" + mNumber, null);
+                // try to change this to moveToLast
                 c.moveToFirst();
                 int i = c.getCount();
                 if (i > 0) {
