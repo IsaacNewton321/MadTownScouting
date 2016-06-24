@@ -65,8 +65,8 @@ public class Welcome extends AppCompatActivity {
         startActivity(teamIntent);
     }
     public void webMenu() {
-        webIntent = new Intent(this, .class);
-        startActivity(webIntent);
+       // webIntent = new Intent(this, .class);
+        //startActivity(webIntent);
     }
 
     @Override
