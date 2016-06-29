@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.robotics3.madtownscouting">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/madtown_robotics"
@@ -24,26 +26,26 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ScoutingMenu"
-            android:label="ScoutingMenu"
-            android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation"
+            android:label="ScoutingMenu"
             android:screenOrientation="landscape"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".GameRoster" />
         android:label="@string/title_activity_game_roster" />
         <activity android:name=".EventsRoster" />
         android:label="@string/title_activity_events_roster" />
-        <activity android:name=".AutonomousPeriod"
+        <activity
+            android:name=".AutonomousPeriod"
             android:configChanges="orientation"
-            android:screenOrientation="landscape"
-            />
-        <activity android:name=".Accuracy_Precision"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Accuracy_Precision"
             android:configChanges="orientation"
-            android:screenOrientation="landscape"
-            />
+            android:screenOrientation="landscape" />
         <activity android:name=".MatchResults" />
         <activity android:name=".SelectTeam" />
         <activity android:name=".TeamRoster" />
+        <activity android:name=".SendData"></activity>
     </application>
 
 </manifest>

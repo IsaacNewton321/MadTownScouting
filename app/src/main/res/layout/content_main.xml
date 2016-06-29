@@ -10,18 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.robotics3.madtownscouting.Welcome"
-    tools:showIn="@layout/activity_main">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome To MadTown Robotics Scouting App"
-        android:textSize="30dp"
-        android:layout_above="@+id/loginButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="59dp"
-        android:id="@+id/welcomeText" />
+    tools:showIn="@layout/activity_main"
+    android:id="@+id/Menu">
 
 
 
@@ -29,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign In"
-        android:id="@+id/signinButton"
+        android:id="@+id/scoutingButton"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
@@ -37,20 +27,10 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Log In"
-        android:id="@+id/loginButton"
-        android:layout_above="@+id/signinButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="41dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/debug"
-        android:layout_below="@+id/signinButton"
+        android:text="Send to Web"
+        android:id="@+id/websiteButton"
+        android:layout_below="@+id/scoutingButton"
+        android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true" />
-
 
 </RelativeLayout>

@@ -182,8 +182,14 @@ public class ScoutingMenu extends AppCompatActivity {
         }
     }
     public void matchresultsScreen() {
+        myDB = this.openOrCreateDatabase("FRC", MODE_PRIVATE, null);
+        Cursor c = myDB.rawQuery("SELECT matchtype_number, _id FROM MatchScouting ORDER BY _id desc LIMIT 1", null );
+        int id = Integer.valueOf(c.getString(c.getColumnIndex("_id")));
+        c.close();
+        myDB.close();
         Intent matchsresultsActivity = new Intent(this, MatchResults.class);
         matchsresultsActivity.putExtra("MATCH_NUMBER", matchtype_number);
+        matchsresultsActivity.putExtra("ID", id);
         startActivity(matchsresultsActivity);
     }
 }

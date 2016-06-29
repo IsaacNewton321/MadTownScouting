@@ -16,4 +16,5 @@
     <string name="title_activity_human_player_ability">HumanPlayerAbility</string>
     <string name="title_activity_tower_damage">TowerDamage</string>
     <string name="title_activity_climbing_activity">ClimbingAbility</string>
+    <string name="title_activity_send_to_web">SendToWeb</string>
 </resources>

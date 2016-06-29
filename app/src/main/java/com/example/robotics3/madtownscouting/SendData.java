@@ -2,7 +2,6 @@ package com.example.robotics3.madtownscouting;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -22,12 +20,9 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -37,24 +32,18 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MatchResults extends AppCompatActivity {
-    Button preparedata;
-    Button senddata;
-    ListView lv;
-    public static String[] prgmNameList = {"Let Us C"};
+public class SendData extends AppCompatActivity {
+    ListView weblv;
+    Button sendToWebButton;
+    MatchData matchResults;
     SQLiteDatabase myDB = null;
     Cursor c;
     Cursor c1;
     MatchResultsAdapter matchAdapter;
-    int _id = 0;
-    public ScoutingData MatchScouting;
-    Thread scoutingThread;
-    String SERVER_HOST = "";
     String address = "http://www.gorohi.com/1323/data.php";
-    public boolean sendingData;
+    String query = "SELECT * FROM MatchScouting";
 
-    public class ScoutingData {
-
+    public class MatchData {
         private String teamName;
         private String teamNumber;
         private String matchtype_number;
@@ -102,9 +91,9 @@ public class MatchResults extends AppCompatActivity {
         public String climbSuccessful;
         public String robotNotes;
 
-        public void LoadDatabase(int id) {
+        public void LoadDatabase(int mNumber) {
             myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
-            c = myDB.rawQuery("SELECT * FROM MatchScouting WHERE _id =" + id, null);
+            c = myDB.rawQuery("SELECT * FROM MatchScouting WHERE _id =" + mNumber, null);
             // try to change this to moveToLast
             c.moveToFirst();
             int i = c.getCount();
@@ -160,10 +149,18 @@ public class MatchResults extends AppCompatActivity {
             c.close();
             myDB.close();
         }
+        public boolean isLoaded(){
+            boolean hi;
+            if(teamNumber == null){
+                hi = false;
+            }else{
+                hi = true;
+            }
+            return hi;
+        }
     }
 
-
-    public static String toJSon(ScoutingData data) {
+    public static String toJSon(MatchData data) {
         try {
             // Here we convert Java Object to JSON
             JSONObject Scouting = new JSONObject();
@@ -215,7 +212,7 @@ public class MatchResults extends AppCompatActivity {
             TeleopPoints.put("robotClimb", data.robotClimb);
             TeleopPoints.put("climbSpeed", data.climbSpeed);
             TeleopPoints.put("climbSuccessful", data.climbSuccessful);
-            TeleopPoints.put("robotNotes",data.robotNotes);
+            TeleopPoints.put("robotNotes", data.robotNotes);
 
             Scouting.put("TeleopPoints", TeleopPoints);
 
@@ -225,62 +222,60 @@ public class MatchResults extends AppCompatActivity {
         }
         return null;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_match_results);
-        MatchScouting = new ScoutingData();
+        setContentView(R.layout.activity_send_data);
+        weblv = (ListView) findViewById(R.id.webListView);
+        sendToWebButton = (Button) findViewById(R.id.sendToWebButton);
+        matchResults = new MatchData();
+        Intent intent = getIntent();
+        if(intent.getStringExtra("ME") != null){
+            query = intent.getStringExtra("ME") + intent.getStringExtra("TEAM_NUMBER");
+        }
         myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
-        c1 = myDB.rawQuery("SELECT * FROM MatchScouting", null);
+        c1 = myDB.rawQuery(query, null);
         int i = c1.getCount();
-        if(i>0){
+        if (i > 0) {
             try {
-                lv = (ListView) findViewById(R.id.matchresultslistView);
-                matchAdapter = new MatchResultsAdapter(MatchResults.this, c1, 0);
-                lv.setAdapter(matchAdapter);
-                lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                weblv = (ListView) findViewById(R.id.webListView);
+                matchAdapter = new MatchResultsAdapter(SendData.this, c1, 0);
+                weblv.setAdapter(matchAdapter);
+                weblv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
-                        int id;
-                        String tNumber;
                         String mNumber;
+                        String tNumber;
+                        int id;
                         Cursor cur = (Cursor) matchAdapter.getItem(position);
                         cur.moveToPosition(position);
-                        tNumber = cur.getString(cur.getColumnIndex("teamNumber"));
-                        mNumber = cur.getString(cur.getColumnIndexOrThrow("matchtype_number"));
                         // Identifies the match number of the list component that you clicked, and prepares
                         // the values of the ScoutingData instance with the data from that list component
                         // so that when you click the send data button it will send the data from the match that you have last clicked on
-                        id = Integer.valueOf(cur.getString(cur.getColumnIndexOrThrow("_id")));
-                        MatchScouting.LoadDatabase(id);
+                        mNumber = cur.getString(cur.getColumnIndexOrThrow("matchtype_number"));
+                        tNumber = cur.getString(cur.getColumnIndexOrThrow("teamNumber"));
+                        id = Integer.valueOf(cur.getString(cur.getColumnIndex("_id")));
+                        matchResults.LoadDatabase(id);
                         Toast.makeText(getApplicationContext(),"Team "+ tNumber+ ", Match "+ mNumber+ " selected", Toast.LENGTH_SHORT).show();
                     }
                 });
-            }catch(Exception e){
-                Log.d("ERROR",e.toString());
+            } catch (Exception e) {
+                Log.d("ERROR", e.toString());
             }
         }
-        preparedata = (Button) findViewById(R.id.preparedataButton);
-        senddata = (Button) findViewById(R.id.senddataButton);
-        MatchScouting = new ScoutingData();
-
-        preparedata.setOnClickListener(new View.OnClickListener() {
+        sendToWebButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = getIntent();
-                _id = intent.getIntExtra("ID", 0);
-                MatchScouting.LoadDatabase(_id);
-            }
-        });
-        senddata.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String json = toJSon(MatchScouting);
-                new MyAsyncTask().execute(json);
+                if(matchResults.isLoaded() == true) {
+                    String json = toJSon(matchResults);
+                    new MyAsyncTask().execute(json);
+                }else{
+                    Toast.makeText(getApplicationContext(),"Please select a match", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
     }
-
     private class MyAsyncTask extends AsyncTask<String, Integer, Double> {
         String response = "";
         @Override
@@ -329,8 +324,6 @@ public class MatchResults extends AppCompatActivity {
         }
 
     }
-
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event){
         if(Integer.parseInt(android.os.Build.VERSION.SDK)> 5
@@ -352,5 +345,4 @@ public class MatchResults extends AppCompatActivity {
         inputStream.close();
         return result;
     }
-
 }

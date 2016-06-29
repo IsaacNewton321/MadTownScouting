@@ -1,7 +1,6 @@
 package com.example.robotics3.madtownscouting;
 
 import android.content.Intent;
-import android.content.IntentSender;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,8 +14,12 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 public class Welcome extends AppCompatActivity {
-    Button loginButton;
-    Intent intent;
+    Button scoutingButton;
+    Button teamsButton;
+    Button webButton;
+    Intent scoutingIntent;
+    Intent teamIntent;
+    Intent webIntent;
     SQLiteDatabase myDB = null;
     String TeamData = "TeamRoster";
     String MatchData = "MatchScouting";
@@ -27,20 +30,31 @@ public class Welcome extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        loginButton = (Button) findViewById(R.id.signinButton);
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        scoutingButton = (Button) findViewById(R.id.scoutingButton);
+        webButton = (Button) findViewById(R.id.websiteButton);
+        scoutingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainMenu();
+                scoutingMenu();
+            }
+        });
+        webButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webMenu();
             }
         });
         createDatabase();
         createMatchScoutingDatabase();
     }
 
-    public void mainMenu() {
-        intent = new Intent(this, MainMenu.class);
-        startActivity(intent);
+    public void scoutingMenu() {
+        scoutingIntent = new Intent(this, MainMenu.class);
+        startActivity(scoutingIntent);
+    }
+    public void webMenu() {
+        webIntent = new Intent(this, SendData.class);
+        startActivity(webIntent);
     }
 
     @Override
@@ -76,7 +90,7 @@ public class Welcome extends AppCompatActivity {
             myDB = this.openOrCreateDatabase("FRC", MODE_PRIVATE, null);
             myDB.execSQL("CREATE TABLE IF NOT EXISTS "
                     + MatchData
-                    + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, matchUploaded int, teamName VARCHAR, teamNumber VARCHAR, matchtype_number int, robotNotes VARCHAR," +
+                    + " ( _id INTEGER PRIMARY KEY AUTOINCREMENT, matchUploaded int, teamName VARCHAR, teamNumber VARCHAR, matchtype_number int, robotNotes VARCHAR," +
                     " activeAuto int, spybotStart int, defenseBreach int, autolowBar int, autoportCullis int, autochevaldeFrise int," +
                     " autoMoat int, autoRamparts int, autodrawBridge int, autosallyPort int, autorockWall int, autoroughTerrain int, " +
                     "autohighScored int, autolowScored int, shotsFired int, highGoalsScored int, lowgoalsScored int," +
