@@ -44,6 +44,8 @@ public class SendData extends AppCompatActivity {
     String query = "SELECT * FROM MatchScouting";
     int id;
     Button delete;
+    String tNumber;
+    String mNumber;
 
     public class MatchData {
         private String teamName;
@@ -247,8 +249,6 @@ public class SendData extends AppCompatActivity {
                 weblv.setAdapter(matchAdapter);
                 weblv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
-                        String mNumber;
-                        String tNumber;
                         Cursor cur = (Cursor) matchAdapter.getItem(position);
                         cur.moveToPosition(position);
                         // Identifies the match number of the list component that you clicked, and prepares
@@ -280,18 +280,10 @@ public class SendData extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 // TODO Auto-generated method stub
-                String tNumber;
-                String mNumber;
-               myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
-              //  Cursor c2 = myDB.rawQuery("SELECT * FROM MatchScouting WHERE _id = " + id, null);
-              //  tNumber = c2.getString(c2.getColumnIndex("teamNumber"));
-             //   mNumber = c2.getString(c2.getColumnIndex("matchtype_number"));
-              //  c2.close();
+                myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
                 myDB.execSQL("DELETE FROM MatchScouting WHERE _id = " + id);
                 myDB.close();
-               // Toast.makeText(getApplicationContext(),"Team "+ tNumber + ", Match " + mNumber + " deleted", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(),"Match Deleted", Toast.LENGTH_SHORT).show();
-               // DeleteData();
+                Toast.makeText(getApplicationContext(),"Team "+ tNumber + ", Match " + mNumber + " deleted", Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
