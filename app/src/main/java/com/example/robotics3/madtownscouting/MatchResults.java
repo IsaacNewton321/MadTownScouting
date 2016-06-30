@@ -42,14 +42,11 @@ public class MatchResults extends AppCompatActivity {
     Button senddata;
     Button delete;
     ListView lv;
-    public static String[] prgmNameList = {"Let Us C"};
     SQLiteDatabase myDB = null;
     Cursor c;
     Cursor c1;
     MatchResultsAdapter matchAdapter;
     public ScoutingData MatchScouting;
-    Thread scoutingThread;
-    String SERVER_HOST = "";
     String address = "http://www.gorohi.com/1323/data.php";
     public boolean sendingData;
     int id = 0;
@@ -108,7 +105,6 @@ public class MatchResults extends AppCompatActivity {
         public void LoadDatabase(int id) {
             myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
             c = myDB.rawQuery("SELECT * FROM MatchScouting WHERE _id =" + id, null);
-            // try to change this to moveToLast
             c.moveToFirst();
             int i = c.getCount();
             if (i > 0) {
