@@ -40,18 +40,21 @@ import java.util.List;
 public class MatchResults extends AppCompatActivity {
     Button preparedata;
     Button senddata;
+    Button delete;
     ListView lv;
     public static String[] prgmNameList = {"Let Us C"};
     SQLiteDatabase myDB = null;
     Cursor c;
     Cursor c1;
     MatchResultsAdapter matchAdapter;
-    int _id = 0;
     public ScoutingData MatchScouting;
     Thread scoutingThread;
     String SERVER_HOST = "";
     String address = "http://www.gorohi.com/1323/data.php";
     public boolean sendingData;
+    int id = 0;
+    String tNumber;
+    String mNumber;
 
     public class ScoutingData {
 
@@ -240,9 +243,6 @@ public class MatchResults extends AppCompatActivity {
                 lv.setAdapter(matchAdapter);
                 lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
-                        int id;
-                        String tNumber;
-                        String mNumber;
                         Cursor cur = (Cursor) matchAdapter.getItem(position);
                         cur.moveToPosition(position);
                         tNumber = cur.getString(cur.getColumnIndex("teamNumber"));
@@ -261,14 +261,14 @@ public class MatchResults extends AppCompatActivity {
         }
         preparedata = (Button) findViewById(R.id.preparedataButton);
         senddata = (Button) findViewById(R.id.senddataButton);
-        MatchScouting = new ScoutingData();
+        delete = (Button) findViewById(R.id.deleteBtn);
 
         preparedata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = getIntent();
-                _id = intent.getIntExtra("ID", 0);
-                MatchScouting.LoadDatabase(_id);
+                id = intent.getIntExtra("ID", 0);
+                MatchScouting.LoadDatabase(id);
             }
         });
         senddata.setOnClickListener(new View.OnClickListener() {
@@ -276,6 +276,17 @@ public class MatchResults extends AppCompatActivity {
             public void onClick(View v) {
                 String json = toJSon(MatchScouting);
                 new MyAsyncTask().execute(json);
+            }
+        });
+        delete.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                // TODO Auto-generated method stub
+                myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
+                myDB.execSQL("DELETE FROM MatchScouting WHERE _id = " + id);
+                myDB.close();
+                Toast.makeText(getApplicationContext(),"Team "+ tNumber + ", Match " + mNumber + " deleted", Toast.LENGTH_SHORT).show();
+                return true;
             }
         });
 
