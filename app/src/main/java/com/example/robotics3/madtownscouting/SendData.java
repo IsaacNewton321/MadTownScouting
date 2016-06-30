@@ -290,7 +290,8 @@ public class SendData extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
                 myDB.execSQL("DELETE FROM MatchScouting WHERE _id = " + id);
-                myDB.close();
+                Cursor c2 = myDB.rawQuery(query, null);
+                matchAdapter.changeCursor(c2);
                 Toast.makeText(getApplicationContext(),"Team "+ tNumber + ", Match " + mNumber + " deleted", Toast.LENGTH_SHORT).show();
                 return true;
             }
