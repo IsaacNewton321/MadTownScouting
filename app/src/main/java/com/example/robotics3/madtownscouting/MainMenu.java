@@ -16,6 +16,8 @@ public class MainMenu extends AppCompatActivity {
         Button gameButton = (Button)findViewById(R.id.gameButton);
         Button eventsButton = (Button)findViewById(R.id.eventsButton);
         Button scoutButton = (Button)findViewById(R.id.scoutButton);
+        EditText searchBox = (EditText)findViewById(R.id.searchField);
+        Button enterSearch = (Button)findViewById(R.id.enterSearchButton);
         teamsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,6 +45,12 @@ public class MainMenu extends AppCompatActivity {
                 loadselectteamScreen();
             }
         });
+        enterSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Search();
+            }
+        });
     }
 
     public void loadteamRosterScreen(){
@@ -63,5 +71,10 @@ public class MainMenu extends AppCompatActivity {
     public void loadselectteamScreen(){
         Intent selectteamScreen = new Intent(this,SelectTeam.class);
         startActivity(selectteamScreen);
+    }
+    public void Search(){
+        Intent sendData = new Intent(this, SendData.class);
+        sendData.putExtra("SEARCH", searchBox.getText().toString());
+        StartActivity(sendData);
     }
 }
