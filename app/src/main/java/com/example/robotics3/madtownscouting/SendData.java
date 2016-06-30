@@ -42,6 +42,8 @@ public class SendData extends AppCompatActivity {
     MatchResultsAdapter matchAdapter;
     String address = "http://www.gorohi.com/1323/data.php";
     String query = "SELECT * FROM MatchScouting";
+    int id;
+    Button delete;
 
     public class MatchData {
         private String teamName;
@@ -228,6 +230,7 @@ public class SendData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_data);
         weblv = (ListView) findViewById(R.id.webListView);
+        delete = (Button) findViewById(R.id.deleteButton);
         sendToWebButton = (Button) findViewById(R.id.sendToWebButton);
         matchResults = new MatchData();
         Intent intent = getIntent();
@@ -246,7 +249,6 @@ public class SendData extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
                         String mNumber;
                         String tNumber;
-                        int id;
                         Cursor cur = (Cursor) matchAdapter.getItem(position);
                         cur.moveToPosition(position);
                         // Identifies the match number of the list component that you clicked, and prepares
@@ -272,6 +274,25 @@ public class SendData extends AppCompatActivity {
                 }else{
                     Toast.makeText(getApplicationContext(),"Please select a match", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        delete.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                // TODO Auto-generated method stub
+                String tNumber;
+                String mNumber;
+               myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
+              //  Cursor c2 = myDB.rawQuery("SELECT * FROM MatchScouting WHERE _id = " + id, null);
+              //  tNumber = c2.getString(c2.getColumnIndex("teamNumber"));
+             //   mNumber = c2.getString(c2.getColumnIndex("matchtype_number"));
+              //  c2.close();
+                myDB.execSQL("DELETE FROM MatchScouting WHERE _id = " + id);
+                myDB.close();
+               // Toast.makeText(getApplicationContext(),"Team "+ tNumber + ", Match " + mNumber + " deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Match Deleted", Toast.LENGTH_SHORT).show();
+               // DeleteData();
+                return true;
             }
         });
 
@@ -344,5 +365,12 @@ public class SendData extends AppCompatActivity {
         }
         inputStream.close();
         return result;
+    }
+    public void DeleteData(){
+        myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
+       // c = myDB.rawQuery("SELECT * FROM MatchScouting WHERE _id =" + id, null);
+        myDB.execSQL("DELETE FROM MatchScouting WHERE _id = " + id);
+      // myDB.close();
+        Toast.makeText(getApplicationContext(),"Match Deleted", Toast.LENGTH_SHORT).show();
     }
 }
