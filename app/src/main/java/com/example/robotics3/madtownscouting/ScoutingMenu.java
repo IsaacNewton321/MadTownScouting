@@ -66,6 +66,8 @@ public class ScoutingMenu extends AppCompatActivity {
     int robotClimb = 0;
     int successfulclimb = 0;
     int climbSpeed = 0;
+    int id = 0;
+    String _id;
 
 
     @Override
@@ -152,12 +154,6 @@ public class ScoutingMenu extends AppCompatActivity {
 
         try {
            myDB = this.openOrCreateDatabase("FRC", MODE_PRIVATE, null);
-          /*  Cursor c = myDB.rawQuery("SELECT teamNumber FROM TeamRoster WHERE teamNumber ='" + teamNumber + "'", null);
-            if (c.getCount() > 0) {
-                System.out.println("Exists");
-            }else {
-                myDB.execSQL("INSERT INTO TeamRoster (teamNumber,teamName) VALUES ('" + teamNumber + "','" + teamName + "')");
-            } */
                 myDB.execSQL("INSERT INTO MatchScouting (teamName, teamNumber, matchtype_number, robotNotes, activeAuto, spybotStart, defenseBreach, autolowBar, " +
                         "autoportCullis, autochevaldeFrise, autoMoat, autoRamparts, autodrawBridge, autosallyPort, autorockWall, autoroughTerrain," +
                         "autohighScored, autolowScored, shotsFired, highGoalsScored, lowgoalsScored," +
@@ -175,18 +171,17 @@ public class ScoutingMenu extends AppCompatActivity {
                         drawbridgehardCrossed + "," + sallyportCrossed + "," + sallyporthardCrossed +
                         "," + rockwallCrossed + "," + rockwallhardCrossed + "," + roughterrainCrossed + "," + roughterrainhardCrossed +
                         "," + robotChallenge + "," + robotClimb + "," + climbSpeed + "," + successfulclimb + ")");
+            Cursor c = myDB.rawQuery("SELECT  matchtype_number, _id FROM MatchScouting ORDER BY _id desc LIMIT 1", null);
+            c.moveToFirst();
+            _id = c.getString(c.getColumnIndexOrThrow("_id"));
+            id  = Integer.valueOf(_id);
+            c.close();
             myDB.close();
-          //  c.close();
         }catch (SQLException e){
             System.out.print(e);
         }
     }
     public void matchresultsScreen() {
-        myDB = this.openOrCreateDatabase("FRC", MODE_PRIVATE, null);
-        Cursor c = myDB.rawQuery("SELECT matchtype_number, _id FROM MatchScouting ORDER BY _id desc LIMIT 1", null );
-        int id = Integer.valueOf(c.getString(c.getColumnIndex("_id")));
-        c.close();
-        myDB.close();
         Intent matchsresultsActivity = new Intent(this, MatchResults.class);
         matchsresultsActivity.putExtra("MATCH_NUMBER", matchtype_number);
         matchsresultsActivity.putExtra("ID", id);

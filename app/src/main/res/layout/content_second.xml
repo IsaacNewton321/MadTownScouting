@@ -17,31 +17,27 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:id="@+id/searchField"
-        android:layout_above:"@+id/teamsButton"/>
+        android:layout_above="@+id/teamsButton"
+        android:layout_toLeftOf="@+id/enterSearchButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
         android:id="@+id/enterSearchButton"
-        android:layout_alignParentLeft="true" />
+        android:layout_below="@+id/textView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Teams"
         android:id="@+id/teamsButton"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="109dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Game"
-        android:id="@+id/gameButton"
-        android:layout_below="@+id/teamsButton"
+        android:layout_marginTop="103dp"
+        android:layout_below="@+id/enterSearchButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -50,9 +46,10 @@
         android:layout_height="wrap_content"
         android:text="Scout"
         android:id="@+id/scoutButton"
-        android:layout_below="@+id/eventsButton"
+        android:layout_below="@+id/searchField"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="43dp" />
 
     <TextView
         android:layout_width="wrap_content"
