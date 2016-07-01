@@ -100,6 +100,11 @@ public class AutonomousPeriod extends AppCompatActivity {
         lowgoalnoButton = (Button) findViewById(R.id.lowgoalnoButton);
         lowgoalnoButton.setVisibility(View.GONE);
         enterautoDataButton = (Button) findViewById(R.id.enterautoDataButton);
+        if(savedInstanceState != null){
+            defenseBreached = savedInstanceState.getInt("defenseBreached");
+            autohighScored = savedInstanceState.getInt("autohighScored");
+            autolowScored = savedInstanceState.getInt("autolowScored");
+        }
 
         /*autoyesButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,6 +175,13 @@ public class AutonomousPeriod extends AppCompatActivity {
                 loadaccuracy_precisionScreen();
             }
         });
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("defenseBreached", defenseBreached);
+        outState.putInt("autohighScored", autohighScored);
+        outState.putInt("autolowScored", autolowScored);
     }
     public void autoperiodquestion2Options(){
         if (autoperiodquestion2Text.getVisibility() == View.GONE){

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -17,6 +18,7 @@ public class MainMenu extends AppCompatActivity {
         Button scoutButton = (Button)findViewById(R.id.scoutButton);
         searchBox = (EditText)findViewById(R.id.searchField);
         Button enterSearch = (Button)findViewById(R.id.enterSearchButton);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         teamsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

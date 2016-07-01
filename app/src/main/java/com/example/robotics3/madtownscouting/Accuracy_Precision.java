@@ -217,6 +217,33 @@ public class Accuracy_Precision extends AppCompatActivity {
         climbsuccesnoButton = (Button) findViewById(R.id.climbsuccesnoButton);
         climbsuccesnoButton.setVisibility(View.GONE);
         robotmatchnotesText = (EditText) findViewById(R.id.robotmatchnotesText);
+        if(savedInstanceState != null){
+            shotsAmount = savedInstanceState.getInt("shotsAmount");
+            shotsScored = savedInstanceState.getInt("shotsScored");
+            lowgoalsScored = savedInstanceState.getInt("lowgoalsScored");
+            lowbarCrossed = savedInstanceState.getInt("lowbarCrossed");
+            lowbarhardCrossed = savedInstanceState.getInt("lowbarhardCrossed");
+            portcullisCrossed = savedInstanceState.getInt("portcullisCrossed");
+            portcullishardCrossed = savedInstanceState.getInt("portcullishardCrossed");
+            chevaldefriseCrossed = savedInstanceState.getInt("chevaldefriseCrossed");
+            chevaldefrisehardCrossed = savedInstanceState.getInt("chevaldefrisehardCrossed");
+            moatCrossed = savedInstanceState.getInt("moatCrossed");
+            moathardCrossed = savedInstanceState.getInt("moathardCrossed");
+            rampartsCrossed = savedInstanceState.getInt("rampartsCrossed");
+            drawbridgeCrossed = savedInstanceState.getInt("drawbridgeCrossed");
+            drawbridgehardCrossed = savedInstanceState.getInt("drawbridgehardCrossed");
+            sallyportCrossed = savedInstanceState.getInt("sallyportCrossed");
+            sallyporthardCrossed = savedInstanceState.getInt("sallyporthardCrossed");
+            rockwallCrossed = savedInstanceState.getInt("rockwallCrossed");
+            rockwallhardCrossed = savedInstanceState.getInt("rockwallhardCrossed");
+            roughterrainCrossed = savedInstanceState.getInt("roughterrainCrossed");
+            roughterrainhardCrossed = savedInstanceState.getInt("roughterrainhardCrossed");
+            robotChallenge = savedInstanceState.getInt("robotChallenge");
+            robotClimb = savedInstanceState.getInt("robotClimb");
+            successfulclimb = savedInstanceState.getInt("successfulclimb");
+            climbSpeed = savedInstanceState.getInt("climbSpeed");
+            setSavedInts();
+        }
         increaseshotsamountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -621,6 +648,32 @@ public class Accuracy_Precision extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putInt("shotsAmount", shotsAmount);
+        outState.putInt("shotsScored", shotsScored);
+        outState.putInt("lowgoalsScored", lowgoalsScored);
+        outState.putInt("lowbarCrossed", lowbarCrossed);
+        outState.putInt("lowbarhardCrossed", lowbarhardCrossed);
+        outState.putInt("portcullisCrossed", portcullisCrossed);
+        outState.putInt("portcullishardCrossed", portcullishardCrossed);
+        outState.putInt("chevaldefriseCrossed", chevaldefriseCrossed);
+        outState.putInt("chevaldefrisehardCrossed", chevaldefrisehardCrossed);
+        outState.putInt("moatCrossed", moatCrossed);
+        outState.putInt("moathardCrossed", moathardCrossed);
+        outState.putInt("rampartsCrossed", rampartsCrossed);
+        outState.putInt("rampartshardCrossed", rampartshardCrossed);
+        outState.putInt("drawbridgeCrossed", drawbridgeCrossed);
+        outState.putInt("drawbridgehardCrossed", drawbridgehardCrossed);
+        outState.putInt("sallyportCrossed", sallyportCrossed);
+        outState.putInt("sallyporthardCrossed", sallyporthardCrossed);
+        outState.putInt("rockwallCrossed", rockwallCrossed);
+        outState.putInt("rockwallhardCrossed", rockwallhardCrossed);
+        outState.putInt("roughterrainCrossed", roughterrainCrossed);
+        outState.putInt("roughterrainhardCrossed", roughterrainhardCrossed);
+    }
+
     public void loadscoutingScreen() {
         Intent getData = getIntent();
         autoPeriodActivtated = getData.getIntExtra("AUTO", 0);
@@ -705,5 +758,29 @@ public class Accuracy_Precision extends AppCompatActivity {
             climbsuccesyesButton.setVisibility(View.GONE);
             climbsuccesnoButton.setVisibility(View.GONE);
         }
+    }
+    public void setSavedInts(){
+        shotsamountValueText.setText(String.valueOf(shotsAmount));
+        shotsscoredValueText.setText(String.valueOf(shotsScored));
+        totalshotsamountValueText.setText(String.valueOf(shotsAmount));
+        lowgoalsscoredText.setText(String.valueOf(lowgoalsScored));
+        lowbareasycrossedValueText.setText(String.valueOf(lowbarCrossed));
+        lowbarhardcrossedValueText.setText(String.valueOf(lowbarhardCrossed));
+        portculliseasycrossedValueText.setText(String.valueOf(portcullisCrossed));
+        portcullishardcrossedValueText.setText(String.valueOf(portcullishardCrossed));
+        chevaldefriseeasycrossedValueText.setText(String.valueOf(chevaldefriseCrossed));
+        chevaldefrisehardcrossedValueText.setText(String.valueOf(chevaldefrisehardCrossed));
+        moateasycrossedValueText.setText(String.valueOf(moatCrossed));
+        moathardcrossedValueText.setText(String.valueOf(moathardCrossed));
+        rampartseasycrossedValueText.setText(String.valueOf(rampartsCrossed));
+        rampartshardcrossedValueText.setText(String.valueOf(rampartshardCrossed));
+        drawbridgeeasycrossedValueText.setText(String.valueOf(drawbridgeCrossed));
+        drawbridgehardcrossedValueText.setText(String.valueOf(drawbridgehardCrossed));
+        sallyporteasycrossedValueText.setText(String.valueOf(sallyportCrossed));
+        sallyporthardcrossedValueText.setText(String.valueOf(sallyporthardCrossed));
+        rockwalleasycrossedValueText.setText(String.valueOf(rockwallCrossed));
+        rockwallhardcrossedValueText.setText(String.valueOf(rockwallhardCrossed));
+        roughterraineasycrossedValueText.setText(String.valueOf(roughterrainCrossed));
+        roughterrainhardcrossedValueText.setText(String.valueOf(roughterrainhardCrossed));
     }
 }

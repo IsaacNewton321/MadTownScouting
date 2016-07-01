@@ -26,22 +26,16 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ScoutingMenu"
-            android:configChanges="orientation"
             android:label="ScoutingMenu"
-            android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".GameRoster" />
         android:label="@string/title_activity_game_roster" />
         <activity android:name=".EventsRoster" />
         android:label="@string/title_activity_events_roster" />
         <activity
-            android:name=".AutonomousPeriod"
-            android:configChanges="orientation"
-            android:screenOrientation="landscape" />
+            android:name=".AutonomousPeriod" />
         <activity
-            android:name=".Accuracy_Precision"
-            android:configChanges="orientation"
-            android:screenOrientation="landscape" />
+            android:name=".Accuracy_Precision" />
         <activity android:name=".MatchResults" />
         <activity android:name=".SelectTeam" />
         <activity android:name=".TeamRoster" />
