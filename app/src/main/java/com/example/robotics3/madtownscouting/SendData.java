@@ -241,10 +241,16 @@ public class SendData extends AppCompatActivity {
         }else if(intent.getStringExtra("SEARCH") != null){
             if(intent.getStringExtra("SEARCH").toLowerCase().contains("m")){
                 String search = intent.getStringExtra("SEARCH").toLowerCase().replace("m","");
+                search = search.replace(" ", "");
                 query = "SELECT * FROM MatchScouting WHERE matchtype_number = " + search;
             }else if(intent.getStringExtra("SEARCH").toLowerCase().contains("t")){
                 String search = intent.getStringExtra("SEARCH").toLowerCase().replace("t","");
+                search = search.replace(" ", "");
                 query = "SELECT * FROM MatchScouting WHERE teamNumber = " + search;
+            }else{
+                String search = intent.getStringExtra("SEARCH");
+                search = search.replace(" ", "");
+                query = "SELECT * FROM MatchScouting WHERE teamNumber = " + search + "OR matchtype_number = " + search;
             }
         }
         myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
