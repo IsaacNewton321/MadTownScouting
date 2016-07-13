@@ -237,6 +237,7 @@ public class MatchResults extends AppCompatActivity {
                 lv = (ListView) findViewById(R.id.matchresultslistView);
                 matchAdapter = new MatchResultsAdapter(MatchResults.this, c1, 0);
                 lv.setAdapter(matchAdapter);
+                lv.setLongClickable(true);
                 lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
                         Cursor cur = (Cursor) matchAdapter.getItem(position);
