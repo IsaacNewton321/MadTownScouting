@@ -263,6 +263,7 @@ public class SendData extends AppCompatActivity {
                 weblv = (ListView) findViewById(R.id.webListView);
                 matchAdapter = new MatchResultsAdapter(SendData.this, c1, 0);
                 weblv.setAdapter(matchAdapter);
+                weblv.setLongClickable(true);
                 weblv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
                         Cursor cur = (Cursor) matchAdapter.getItem(position);
