@@ -251,6 +251,20 @@ public class MatchResults extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Team "+ tNumber+ ", Match "+ mNumber+ " selected", Toast.LENGTH_SHORT).show();
                     }
                 });
+                lv.setOnItemLongClickListener(new OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                    int pos, long id) {
+                // TODO Auto-generated method stub
+                Cursor cur = (Cursor) matchAdapter.getItem(position);
+                cur.moveToPosition(position);
+                int editID = Integer.valueOf(cur.getString(cur.getColumnIndex("_id")));
+                Intent editIntent = new Intent(this, EditScreen.class);
+                editIntent.putExtra("ID", editID);
+                StartActivity(editIntent);
+                return true;
+            }
+        });
             }catch(Exception e){
                 Log.d("ERROR",e.toString());
             }
