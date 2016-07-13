@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,5 +11,365 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.robotics3.EditScreen">
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Team Name"
+        android:id="@+id/teamNameText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/teamNameEnterText"
+        android:hint="Team Name"
+        android:layout_below="@+id/teamNameText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Team Number"
+        android:id="@+id/teamNumberText"
+        android:layout_below="@+id/teamNameEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/teamNameEnterText"
+        android:hint="Team Number"
+        android:layout_below="@+id/teamNumberText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Match Number"
+        android:id="@+id/matchNumberText"
+        android:layout_below="@+id/teamNameEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/matchNumberEnterText"
+        android:hint="Match Number"
+        android:layout_below="@+id/matchNumberText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Active Auto"
+        android:id="@+id/activeAutoText"
+        android:layout_below="@+id/matchNumberEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/activeAutoEnterText"
+        android:hint="Team Number"
+        android:layout_below="@+id/activeAutoText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Spy Bot Start"
+        android:id="@+id/spyBotStartText"
+        android:layout_below="@+id/activeAutoEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/spyBotStartEnterText"
+        android:hint="Spy Bot Start"
+        android:layout_below="@+id/spyBotStartText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+    
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Defense Breached"
+        android:id="@+id/defBreachedText"
+        android:layout_below="@+id/spyBotStartEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/defBreachedEnterText"
+        android:hint="Defense Breached"
+        android:layout_below="@+id/defBreachedText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Auto Low Bar"
+        android:id="@+id/autoLowBarText"
+        android:layout_below="@+id/defBreachedEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/autoLowBarEnterText"
+        android:hint="Auto Low Bar"
+        android:layout_below="@+id/autoLowBarText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Auto Portcullis"
+        android:id="@+id/autoPortCullisText"
+        android:layout_below="@+id/autoLowBarEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/autoPortCullisEnterText"
+        android:hint="Auto Portcullis"
+        android:layout_below="@+id/autoPortCullisText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Auto Cheval De Frise"
+        android:id="@+id/autoChevalText"
+        android:layout_below="@+id/autoPortCullisEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/autoChevalEnterText"
+        android:hint="Auto Cheval De Frise"
+        android:layout_below="@+id/autoChevalText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Auto Moat"
+        android:id="@+id/autoMoatText"
+        android:layout_below="@+id/autoChevalEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/autoMoatEnterText"
+        android:hint="Auto Moat"
+        android:layout_below="@+id/autoMoatText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Auto Ramparts"
+        android:id="@+id/autoRampartsText"
+        android:layout_below="@+id/autoMoatEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/autoRampartsEnterText"
+        android:hint="Auto Ramparts"
+        android:layout_below="@+id/autoRampartsText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Auto Drawbridge"
+        android:id="@+id/autoDrawBridgeText"
+        android:layout_below="@+id/autoRampartsEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/autoDrawBridgeEnterText"
+        android:hint="Auto Drawbridge"
+        android:layout_below="@+id/autoDrawBridgeText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Auto Sally Port"
+        android:id="@+id/autoSallyText"
+        android:layout_below="@+id/autoDrawBridgeEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/autoSallyEnterText"
+        android:hint="Auto Sally Port"
+        android:layout_below="@+id/autoSallyText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Auto Rock Wall"
+        android:id="@+id/autoRockWallText"
+        android:layout_below="@+id/autoSallyEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/autoRockWallEnterText"
+        android:hint="Auto Rock Wall"
+        android:layout_below="@+id/autoRockWallText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Auto Rough Terrain"
+        android:id="@+id/autoRoughTerrainText"
+        android:layout_below="@+id/autoRockWallEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/autoRoughTerrainEnterText"
+        android:hint="Auto Rough Terrain"
+        android:layout_below="@+id/autoRoughTerrainText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Auto High Goal"
+        android:id="@+id/autoHighGoalText"
+        android:layout_below="@+id/autoRoughTerrainEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/autoHighGoalEnterText"
+        android:hint="Auto High Goal"
+        android:layout_below="@+id/autoHighGoalText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Auto Low Goal"
+        android:id="@+id/autoLowGoalText"
+        android:layout_below="@+id/autoHighGoalEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/autoLowGoalEnterText"
+        android:hint="Auto Low Goal"
+        android:layout_below="@+id/autoLowGoalText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Shots Fired"
+        android:id="@+id/shotsFiredText"
+        android:layout_below="@+id/autoLowGoalEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/shotsFiredEnterText"
+        android:hint="Shots Fired"
+        android:layout_below="@+id/shotsFiredText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>
+</ScrollView>
