@@ -72,7 +72,10 @@ int id;
             autoDrawBridgeEnterText.setText(c.getString(c.getColumnIndex("autodrawBridge")), TextView.BufferType.EDITABLE);
             autoSallyEnterText.setText(c.getString(c.getColumnIndex("autosallyPort")), TextView.BufferType.EDITABLE);
             autoRockWallEnterText.setText(c.getString(c.getColumnIndex("autorockWall")), TextView.BufferType.EDITABLE);
-            autoRoughTerrainEnterText
+            autoRoughTerrainEnterText.setText(c.getString(c.getColumnIndex("autoroughTerrain")), TextView.BufferType.EDITABLE);
+            autoHighGoalEnterText.setText(c.getString(c.getColumnIndex("autohighScored")), TextView.BufferType.EDITABLE);
+            autoLowGoalEnterText.setText(c.getString(c.getColumnIndex("autolowScored")), TextView.BufferType.EDITABLE);
+            shotsFiredEnterText.setText(c.getString(c.getColumnIndex("shotsFired")), TextView.BufferType.EDITABLE);
         }
     }
 }
