@@ -511,5 +511,45 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
         
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Cheval De Frise Hard Crossed"
+        android:id="@+id/chevalHardText"
+        android:layout_below="@+id/chevalEnterEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/chevalHardEnterText"
+        android:hint="Cheval De Frise Hard Crossed"
+        android:layout_below="@+id/chevalHardText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Moat Crossed"
+        android:id="@+id/moatCrossedText"
+        android:layout_below="@+id/chevalHardEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/moatCrossedEnterText"
+        android:hint="Moat Crossed"
+        android:layout_below="@+id/moatCrossedText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
 </RelativeLayout>
 </ScrollView>
