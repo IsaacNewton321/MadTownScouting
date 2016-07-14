@@ -370,6 +370,146 @@
         android:layout_below="@+id/shotsFiredText"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
-
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="High Goals Scored"
+        android:id="@+id/highGoalsScoredText"
+        android:layout_below="@+id/shotsFiredEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/highGoalsScoredEnterText"
+        android:hint="High Goals Scored"
+        android:layout_below="@+id/highGoalsScoredText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Low Goals Scored"
+        android:id="@+id/lowGoalsText"
+        android:layout_below="@+id/lowGoalsScoredEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/lowGoalsScoredEnterText"
+        android:hint="Low Goals Scored"
+        android:layout_below="@+id/lowGoalsText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Low Bar Crossed"
+        android:id="@+id/lowBarCrossedText"
+        android:layout_below="@+id/lowGoalsScoredEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/lowBarCrossedEnterText"
+        android:hint="Low Bar Crossed"
+        android:layout_below="@+id/lowBarCrossedText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Low Bar Hard Crossed"
+        android:id="@+id/lowBarHardText"
+        android:layout_below="@+id/lowBarCrossedEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/lowBarHardEnterText"
+        android:hint="Low Bar Hard Crossed"
+        android:layout_below="@+id/lowBarHardText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Portcullis Crossed"
+        android:id="@+id/portCullisCrossedText"
+        android:layout_below="@+id/lowBarHardEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/portCullisCrossedEnterText"
+        android:hint="Portcullis Crossed"
+        android:layout_below="@+id/portCullisCrossedText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Portcullis Hard Crossed"
+        android:id="@+id/portCullisHardText"
+        android:layout_below="@+id/portCullisCrossedEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/portCullisHardEnterText"
+        android:hint="Portcullis Hard Crossed"
+        android:layout_below="@+id/portCullisHardText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Cheval De Frise Crossed"
+        android:id="@+id/chevalText"
+        android:layout_below="@+id/portCullisHardEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/chevalEnterText"
+        android:hint="Cheval De Frise Crossed"
+        android:layout_below="@+id/chevalText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+        
 </RelativeLayout>
 </ScrollView>
