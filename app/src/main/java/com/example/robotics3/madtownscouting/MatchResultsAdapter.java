@@ -35,7 +35,7 @@ import java.util.zip.Inflater;
 
     public void bindView(View view, Context context, Cursor cursor) {
         TextView textViewTitle = (TextView) view.findViewById(R.id.matchtype_numberText);
-        textViewTitle.setText(cursor.getString(cursor.getColumnIndex("teamName")) + " " + cursor.getString(cursor.getColumnIndex("teamNumber")) + " " + cursor.getString(cursor.getColumnIndex("matchtype_number")));
+        textViewTitle.setText(cursor.getString(cursor.getColumnIndex("teamName")) + " Team " + cursor.getString(cursor.getColumnIndex("teamNumber")) + " Match " + cursor.getString(cursor.getColumnIndex("matchtype_number")));
         TextView textViewAutoActive = (TextView) view.findViewById(R.id.AutoActivetextView);
         textViewAutoActive.setText(" ActiveAuto " + cursor.getString(cursor.getColumnIndex("activeAuto")));
         TextView textViewSpybotStart = (TextView) view.findViewById(R.id.SpybotStarttextView);
