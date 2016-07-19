@@ -1,7 +1,12 @@
 package com.example.robotics3;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.robotics3.madtownscouting.R;
 
@@ -44,7 +49,7 @@ EditText autoLowGoalEnterText;
 EditText shotsFiredEnterText;
 EditText EnterText;
 
-SQLiteDataBase myDB = null;
+SQLiteDatabase myDB = null;
 Cursor c;
 int id;
     @Override
@@ -65,7 +70,7 @@ int id;
             spyBotStartEnterText.setText(c.getString(c.getColumnIndex("spybotStart")), TextView.BufferType.EDITABLE);
             defenseBreachedEnterText.setText(c.getString(c.getColumnIndex("defenseBreach")), TextView.BufferType.EDITABLE);
             autoLowBarEnterText.setText(c.getString(c.getColumnIndex("autolowBar")), TextView.BufferType.EDITABLE);
-            autoPortCullisEnterText.setText(c.getString(c.getColumnIndex("autoportCullis")), TextView.BufferType.EDITABLE);
+            autoPortcullisEnterText.setText(c.getString(c.getColumnIndex("autoportCullis")), TextView.BufferType.EDITABLE);
             autoChevalEnterText.setText(c.getString(c.getColumnIndex("autochevaldeFrise")), TextView.BufferType.EDITABLE);
             autoMoatEnterText.setText(c.getString(c.getColumnIndex("autoMoat")), TextView.BufferType.EDITABLE);
             autoRampartsEnterText.setText(c.getString(c.getColumnIndex("autoRamparts")), TextView.BufferType.EDITABLE);

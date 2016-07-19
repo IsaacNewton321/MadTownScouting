@@ -16,6 +16,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.robotics3.EditScreen;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -252,17 +254,17 @@ public class MatchResults extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Team "+ tNumber+ ", Match "+ mNumber+ " selected", Toast.LENGTH_SHORT).show();
                     }
                 });
-                lv.setOnItemLongClickListener(new OnItemLongClickListener() {
+                lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
                     int pos, long id) {
                 // TODO Auto-generated method stub
-                Cursor cur = (Cursor) matchAdapter.getItem(position);
-                cur.moveToPosition(position);
+                Cursor cur = (Cursor) matchAdapter.getItem(pos);
+                cur.moveToPosition(pos);
                 int editID = Integer.valueOf(cur.getString(cur.getColumnIndex("_id")));
-                Intent editIntent = new Intent(this, EditScreen.class);
+                Intent editIntent = new Intent(getBaseContext(), EditScreen.class);
                 editIntent.putExtra("ID", editID);
-                StartActivity(editIntent);
+                startActivity(editIntent);
                 return true;
             }
         });
