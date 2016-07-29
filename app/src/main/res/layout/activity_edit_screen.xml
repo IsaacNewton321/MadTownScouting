@@ -10,15 +10,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.robotics3.EditScreen">
+    tools:context="com.example.robotics3.madtownscouting.EditScreen">
 <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Team Name"
         android:id="@+id/teamNameText"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 <EditText
         android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Match Number"
         android:id="@+id/matchNumberText"
-        android:layout_below="@+id/teamNameEnterText"
+        android:layout_below="@+id/teamNumberEnterText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 <EditText
@@ -397,7 +397,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Low Goals Scored"
         android:id="@+id/lowGoalsText"
-        android:layout_below="@+id/lowGoalsScoredEnterText"
+        android:layout_below="@+id/highGoalsScoredEnterText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 <EditText
@@ -410,7 +410,7 @@
         android:layout_below="@+id/lowGoalsText"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
-        
+
 <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -430,7 +430,7 @@
         android:layout_below="@+id/lowBarCrossedText"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
-        
+
 <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -450,7 +450,7 @@
         android:layout_below="@+id/lowBarHardText"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
-        
+
 <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -470,7 +470,7 @@
         android:layout_below="@+id/portCullisCrossedText"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
-        
+
 <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -490,7 +490,7 @@
         android:layout_below="@+id/portCullisHardText"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
-        
+
 <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -510,7 +510,7 @@
         android:layout_below="@+id/chevalText"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
-        
+
 <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -530,7 +530,7 @@
         android:layout_below="@+id/chevalHardText"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
-        
+
 <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -570,6 +570,7 @@
         android:layout_below="@+id/moatHardText"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
+        
 
 
 
