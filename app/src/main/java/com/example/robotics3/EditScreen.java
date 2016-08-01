@@ -124,6 +124,32 @@ int id;
         autoRoughTerrainEnterText = (EditText)findViewById(R.id.autoRoughTerrainEnterText);
         autoHighGoalEnterText = (EditText)findViewById(R.id.autoHighGoalEnterText);
         autoLowGoalEnterText = (EditText)findViewById(R.id.autoLowGoalEnterText);
+        shotsFiredEnterText = (EditText)findViewById(R.id.shotsFiredEnterText);
+        highGoalsScoredEnterText = (EditText)findViewById(R.id.highGoalsScoredEnterText);
+        lowGoalsScoredEnterText = (EditText)findViewById(R.id.lowGoalsScoredEnterText);
+        lowBarCrossedEnterText = (EditText)findViewById(R.id.lowBarCrossedEnterText);
+        lowBarHardEnterText = (EditText)findViewById(R.id.lowBarHardEnterText);
+        portCullisCrossedEnterText = (EditText)findViewById(R.id.portCullisCrossedEnterText);
+        portCullisHardEnterText = (EditText)findViewById(R.id.portCullisHardEnterText);
+        chevalEnterText = (EditText)findViewById(R.id.chevalEnterText);
+        chevalHardEnterText = (EditText)findViewById(R.id.chevalHardEnterText);
+        moatCrossedEnterText = (EditText)findViewById(R.id.moatCrossedEnterText);
+        moatHardEnterText = (EditText)findViewById(R.id.moatHardEnterText);
+        rampartsCrossedEnterText = (EditText)findViewById(R.id.rampartsCrossedEnterText);
+        rampartsHardEnterText = (EditText)findViewById(R.id.rampartsHardEnterText);
+        drawbridgeCrossedEnterText = (EditText)findViewById(R.id.drawbridgeCrossedEnterText);
+        drawbridgeHardEnterText = (EditText)findViewById(R.id.drawbridgeHardEnterText);
+        sallyCrossedEnterText = (EditText)findViewById(R.id.sallyCrossedEnterText);
+        sallyHardEnterText = (EditText)findViewById(R.id.sallyHardEnterText);
+        rockwallCrossedEnterText = (EditText)findViewById(R.id.rockwallCrossedEnterText);
+        rockwallHardEnterText = (EditText)findViewById(R.id.rockwallHardEnterText);
+        roughTerrainCrossedEnterText = (EditText)findViewById(R.id.roughTerrainCrossedEnterText);
+        roughTerrainHardEnterText = (EditText)findViewById(R.id.roughTerrainHardEnterText);
+        robotChallengeEnterText = (EditText)findViewById(R.id.robotChallengeEnterText);
+        robotClimbEnterText = (EditText)findViewById(R.id.robotClimbEnterText);
+        climbSpeedEnterText = (EditText)findViewById(R.id.climbSpeedEnterText);
+        climbSuccessEnterText = (EditText)findViewById(R.id.climbSuccessEnterText);
+        notesEnterText = (EditText)findViewById(R.id.notesEnterText);
         
         Intent intent = getIntent();
         id = intent.getIntExtra("ID", 0);
@@ -150,6 +176,13 @@ int id;
             autoHighGoalEnterText.setText(c.getString(c.getColumnIndex("autohighScored")), TextView.BufferType.EDITABLE);
             autoLowGoalEnterText.setText(c.getString(c.getColumnIndex("autolowScored")), TextView.BufferType.EDITABLE);
             shotsFiredEnterText.setText(c.getString(c.getColumnIndex("shotsFired")), TextView.BufferType.EDITABLE);
+            highGoalsScoredEnterText.setText(c.getString(c.getColumnIndex("highGoalsScored")), TextView.BufferType.EDITABLE);
+            lowGoalsScoredEnterText.setText(c.getString(c.getColumnIndex("lowgoalsScored")), TextView.BufferType.EDITABLE);
+            lowBarCrossedEnterText.setText(c.getString(c.getColumnIndex("lowbarCrossed")), TextView.BufferType.EDITABLE);
+            lowBarHardEnterText.setText(c.getString(c.getColumnIndex("lowbarhardCrossed")), TextView.BufferType.EDITABLE);
+            portCullisCrossedEnterText.setText(c.getString(c.getColumnIndex("portcullisCrossed")), TextView.BufferType.EDITABLE);
+            portCullisHardEnterText.setText(c.getString(c.getColumnIndex("portcullishardCrossed")), TextView.BufferType.EDITABLE);
+            EnterText.setText(c.getString(c.getColumnIndex("")), TextView.BufferType.EDITABLE);
         }
     }
 }
