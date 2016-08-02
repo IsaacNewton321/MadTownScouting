@@ -239,6 +239,7 @@ public class MatchResults extends AppCompatActivity {
                 lv = (ListView) findViewById(R.id.matchresultslistView);
                 matchAdapter = new MatchResultsAdapter(MatchResults.this, c1, 0);
                 lv.setAdapter(matchAdapter);
+                lv.setSelection(matchAdapter.getCount() - 1);
                 lv.setLongClickable(true);
                 lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
