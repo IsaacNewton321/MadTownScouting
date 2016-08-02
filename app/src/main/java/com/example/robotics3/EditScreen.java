@@ -101,6 +101,9 @@ EditText notesEnterText;
 
 Button confirmEditsButton;
 
+String tNumber;
+String mNumber;
+
 SQLiteDatabase myDB = null;
 Cursor c;
 int id;
@@ -235,9 +238,15 @@ int id;
         roughTerrainHardEnterText.getText().toString() + ", robotChallenge = " + robotChallengeEnterText.getText().toString() + ", robotClimb = " + robotClimbEnterText.getText().toString() +
         ", climbSpeed = " + climbSpeedEnterText.getText().toString() + ", climbSuccessful = " + climbSuccessEnterText.getText().toString() + ", robotNotes = " + notesEnterText.getText().toString() +
         "WHERE _id = " + id);
+        Cursor c = myDB.rawQuery("SELECT * FROM MatchScouting WHERE _id =" + id, null);
+        c.moveToFirst();
+        tNumber = c.getString(c.getColumnIndex("teamNumber"));
+        mNumber = c.getString(c.getColumnIndex("matchtype_number"));
         myDB.close();
         Intent returnIntent = new Intent();
-        setResult(Activity.RESULT_CANCELED, returnIntent);
+        returnIntent.putExtra("TEAM_NUMBER",tNumber);
+        returnIntent.putExtra("MATCH_NUMBER", mNumber);
+        setResult(Activity.RESULT_OK,returnIntent);
         finish();
     }
 }
