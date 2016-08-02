@@ -298,6 +298,7 @@ public class MatchResults extends AppCompatActivity {
                 myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
                 myDB.execSQL("DELETE FROM MatchScouting WHERE _id = " + id);
                 myDB.close();
+                matchAdapter.notifyDataSetChanged();
                 Toast.makeText(getApplicationContext(),"Team "+ tNumber + ", Match " + mNumber + " deleted", Toast.LENGTH_SHORT).show();
                 return true;
             }
@@ -382,10 +383,12 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
     if (requestCode == 1) {
         if(resultCode == Activity.RESULT_OK){
-            
+            String match = data.getStringExtra("MATCH_NUMBER");
+            String teamN = data.getStringExtra("TEAM_NUMBER");
+            Toast.makeText(getApplicationContext(),"Team " + teamN + ", Match " + match + "updated.", Toast.LENGTH_SHORT).show();
         }
         if (resultCode == Activity.RESULT_CANCELED) {
-            Toast.makeText(getApplicationContext(),"Team " + , Toast.LENGTH_SHORT).show();
+            
         }
     }
 }
