@@ -46,6 +46,7 @@ public class SendData extends AppCompatActivity {
     String query = "SELECT * FROM MatchScouting";
     int id;
     Button delete;
+    Button scrollToTopButton;
     String tNumber;
     String mNumber;
 
@@ -236,6 +237,7 @@ public class SendData extends AppCompatActivity {
         weblv = (ListView) findViewById(R.id.webListView);
         delete = (Button) findViewById(R.id.deleteButton);
         sendToWebButton = (Button) findViewById(R.id.sendToWebButton);
+        scrollToTopButton = (Button) findViewById(R.id.ToTopButton);
         matchResults = new MatchData();
         Intent intent = getIntent();
         if(intent.getStringExtra("ME") != null){
@@ -320,6 +322,13 @@ public class SendData extends AppCompatActivity {
                 matchAdapter.notifyDataSetChanged();
                 Toast.makeText(getApplicationContext(),"Team "+ tNumber + ", Match " + mNumber + " deleted", Toast.LENGTH_SHORT).show();
                 return true;
+            }
+        });
+        
+        scrollToTopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                weblv.smoothScrollToPosition(0);
             }
         });
 
@@ -408,6 +417,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             String match = data.getStringExtra("MATCH_NUMBER");
             String teamN = data.getStringExtra("TEAM_NUMBER");
             Toast.makeText(getApplicationContext(),"Team " + teamN + ", Match " + match + "updated.", Toast.LENGTH_SHORT).show();
+            matchAdapter.notifyDataSetChanged();
         }
         if (resultCode == Activity.RESULT_CANCELED) {
             
