@@ -394,6 +394,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             String match = data.getStringExtra("MATCH_NUMBER");
             String teamN = data.getStringExtra("TEAM_NUMBER");
             Toast.makeText(getApplicationContext(),"Team " + teamN + ", Match " + match + "updated.", Toast.LENGTH_SHORT).show();
+            matchAdapter.notifyDataSetChanged();
         }
         if (resultCode == Activity.RESULT_CANCELED) {
             
