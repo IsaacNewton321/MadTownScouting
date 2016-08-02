@@ -264,7 +264,7 @@ public class MatchResults extends AppCompatActivity {
                 int editID = Integer.valueOf(cur.getString(cur.getColumnIndex("_id")));
                 Intent editIntent = new Intent(getBaseContext(), EditScreen.class);
                 editIntent.putExtra("ID", editID);
-                startActivity(editIntent);
+                startActivityForResult(editIntent, 1);
                 return true;
             }
         });
@@ -377,4 +377,16 @@ public class MatchResults extends AppCompatActivity {
         return result;
     }
 
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+    if (requestCode == 1) {
+        if(resultCode == Activity.RESULT_OK){
+            
+        }
+        if (resultCode == Activity.RESULT_CANCELED) {
+            Toast.makeText(getApplicationContext(),"Team " + , Toast.LENGTH_SHORT).show();
+        }
+    }
+}
 }
