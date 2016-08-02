@@ -43,6 +43,7 @@ public class MatchResults extends AppCompatActivity {
     Button preparedata;
     Button senddata;
     Button delete;
+    Button scrollToTop;
     ListView lv;
     SQLiteDatabase myDB = null;
     Cursor c;
@@ -276,6 +277,7 @@ public class MatchResults extends AppCompatActivity {
         preparedata = (Button) findViewById(R.id.preparedataButton);
         senddata = (Button) findViewById(R.id.senddataButton);
         delete = (Button) findViewById(R.id.deleteBtn);
+        scrollToTop = (Button) findViewById(R.id.scrollToTopButton);
 
         preparedata.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -304,7 +306,12 @@ public class MatchResults extends AppCompatActivity {
                 return true;
             }
         });
-
+        scrollToTop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lv.smoothScrollToPosition(0);
+            }
+        });
     }
 
     private class MyAsyncTask extends AsyncTask<String, Integer, Double> {
