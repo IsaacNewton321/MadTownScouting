@@ -318,7 +318,8 @@ public class MatchResults extends AppCompatActivity {
         goHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(this, SelectTeam.class);
+                Intent i = new Intent(getApplicationContext(), SelectTeam.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
             }
         });
@@ -327,7 +328,8 @@ public class MatchResults extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(this, Welcome.class);
+                Intent i = new Intent(getApplicationContext(), Welcome.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
             }
         });
