@@ -44,6 +44,7 @@ public class MatchResults extends AppCompatActivity {
     Button senddata;
     Button delete;
     Button scrollToTop;
+    Button goHome;
     ListView lv;
     SQLiteDatabase myDB = null;
     Cursor c;
@@ -278,6 +279,7 @@ public class MatchResults extends AppCompatActivity {
         senddata = (Button) findViewById(R.id.senddataButton);
         delete = (Button) findViewById(R.id.deleteBtn);
         scrollToTop = (Button) findViewById(R.id.scrollToTopButton);
+        goHome = (Button) findViewById(R.id.goHomeButton);
 
         preparedata.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -310,6 +312,23 @@ public class MatchResults extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 lv.smoothScrollToPosition(0);
+            }
+        });
+        
+        goHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(this, SelectTeam.class);
+                startActivity(i);
+            }
+        });
+        
+        goHome.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(this, Welcome.class);
+                startActivity(i);
             }
         });
     }
