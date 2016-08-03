@@ -1,5 +1,6 @@
 package com.example.robotics3.madtownscouting;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,8 +14,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import com.example.robotics3.EditScreen;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -317,9 +316,9 @@ public class SendData extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
                 myDB.execSQL("DELETE FROM MatchScouting WHERE _id = " + id);
-                //Cursor c2 = myDB.rawQuery(query, null);
-                //matchAdapter.changeCursor(c2);
-                matchAdapter.notifyDataSetChanged();
+                Cursor c2 = myDB.rawQuery(query, null);
+                matchAdapter.changeCursor(c2);
+                //matchAdapter.notifyDataSetChanged();
                 Toast.makeText(getApplicationContext(),"Team "+ tNumber + ", Match " + mNumber + " deleted", Toast.LENGTH_SHORT).show();
                 return true;
             }

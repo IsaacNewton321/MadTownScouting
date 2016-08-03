@@ -38,7 +38,7 @@
         <activity android:name=".SelectTeam" />
         <activity android:name=".TeamRoster" />
         <activity android:name=".SendData" />
-        <activity android:name="com.example.robotics3.EditScreen"></activity>
+        <activity android:name=".EditScreen"></activity>
     </application>
 
 </manifest>

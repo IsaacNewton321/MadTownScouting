@@ -570,10 +570,6 @@
         android:layout_below="@+id/moatHardText"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 
 <TextView
         android:layout_width="wrap_content"
@@ -581,7 +577,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Ramparts Crossed"
         android:id="@+id/rampartsCrossedText"
-        android:layout_below="@+id/moatCrossedEnterText"
+        android:layout_below="@+id/moatHardEnterText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 <EditText

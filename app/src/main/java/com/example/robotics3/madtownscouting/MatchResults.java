@@ -1,8 +1,8 @@
 package com.example.robotics3.madtownscouting;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.robotics3.EditScreen;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -24,12 +21,9 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -302,8 +296,10 @@ public class MatchResults extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
                 myDB.execSQL("DELETE FROM MatchScouting WHERE _id = " + id);
+                Cursor c2 = myDB.rawQuery("SELECT * FROM MatchScouting", null);
+                matchAdapter.changeCursor(c2);
                 myDB.close();
-                matchAdapter.notifyDataSetChanged();
+                lv.setSelection(matchAdapter.getCount() - 1);
                 Toast.makeText(getApplicationContext(),"Team "+ tNumber + ", Match " + mNumber + " deleted", Toast.LENGTH_SHORT).show();
                 return true;
             }
@@ -331,6 +327,7 @@ public class MatchResults extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(), Welcome.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
+                return true;
             }
         });
     }
@@ -414,7 +411,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == Activity.RESULT_OK){
             String match = data.getStringExtra("MATCH_NUMBER");
             String teamN = data.getStringExtra("TEAM_NUMBER");
-            Toast.makeText(getApplicationContext(),"Team " + teamN + ", Match " + match + "updated.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Team " + teamN + ", Match " + match + " updated.", Toast.LENGTH_SHORT).show();
             matchAdapter.notifyDataSetChanged();
         }
         if (resultCode == Activity.RESULT_CANCELED) {

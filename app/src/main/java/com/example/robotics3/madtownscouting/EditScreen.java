@@ -1,10 +1,14 @@
-package com.example.robotics3;
+package com.example.robotics3.madtownscouting;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -75,7 +79,7 @@ int id;
         spyBotStartEnterText = (EditText)findViewById(R.id.spyBotStartEnterText);
         defenseBreachedEnterText = (EditText)findViewById(R.id.defBreachedEnterText);
         autoLowBarEnterText = (EditText)findViewById(R.id.autoLowBarEnterText);
-        autoPortCullisEnterText = (EditText)findViewById(R.id.autoPortCullisEnterText);
+        autoPortcullisEnterText = (EditText)findViewById(R.id.autoPortCullisEnterText);
         autoChevalEnterText = (EditText)findViewById(R.id.autoChevalEnterText);
         autoMoatEnterText = (EditText)findViewById(R.id.autoMoatEnterText);
         autoRampartsEnterText = (EditText)findViewById(R.id.autoRampartsEnterText);
@@ -157,7 +161,7 @@ int id;
             sallyHardEnterText.setText(c.getString(c.getColumnIndex("sallyporthardCrossed")), TextView.BufferType.EDITABLE);
             rockwallCrossedEnterText.setText(c.getString(c.getColumnIndex("rockwallCrossed")), TextView.BufferType.EDITABLE);
             rockwallHardEnterText.setText(c.getString(c.getColumnIndex("rockwallhardCrossed")), TextView.BufferType.EDITABLE);
-            roughTerrainEnterText.setText(c.getString(c.getColumnIndex("roughterrainCrossed")), TextView.BufferType.EDITABLE);
+            roughTerrainCrossedEnterText.setText(c.getString(c.getColumnIndex("roughterrainCrossed")), TextView.BufferType.EDITABLE);
             roughTerrainHardEnterText.setText(c.getString(c.getColumnIndex("roughterrainhardCrossed")), TextView.BufferType.EDITABLE);
             robotChallengeEnterText.setText(c.getString(c.getColumnIndex("robotChallenge")), TextView.BufferType.EDITABLE);
             robotClimbEnterText.setText(c.getString(c.getColumnIndex("robotClimb")), TextView.BufferType.EDITABLE);
@@ -175,25 +179,29 @@ int id;
         });
     }
     public void changeData(){
-        myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
-        myDB.execSQL("UPDATE MatchScouting SET teamName = " + teamNameEnterText.getText().toString() + ", teamNumber = " + teamNumberEnterText.getText().toString() +
-        ", matchtype_umber = " + matchNumberEnterText.getText().toString() + ", activeAuto = " + activeAutoEnterText.getText().toString() + ", spybotStart = " +
-        spyBotStartEnterText.getText().toString() + ", defenseBreach = " + defenseBreachedEnterText.getText().toString() + ", autolowBar = " + autoLowBarEnterText.getText().toString() +
-        ", autoportCullis = " + autoPortcullisEnterText.getText().toString() + ", autochevaldeFrise = " + autoChevalEnterText.getText().toString() + ", autoMoat = " +
-        autoMoatEnterText.getText().toString() + ", autoRamparts = " + autoRampartsEnterText.getText().toString() + ", autodrawBridge = " + autoDrawBridgeEnterText.getText().toString() +
-        ", autosallyPort = " + autoSallyEnterText.getText().toString() + ", autorockWall = " + autoRockWallEnterText.getText().toString() + ", autoroughTerrain" +
-        autoRoughTerrainEnterText.getText().toString() + ", autohighScored = " + autoHighGoalEnterText.getText().toString() + ", autolowScored = " + autoLowGoalEnterText.getText().toString() +
-        ", shotsFired = " + shotsFiredEnterText.getText().toString() + ", highGoalsScored = " + highGoalsScoredEnterText.getText().toString() + ", lowgoalsScored = " + lowGoalsScoredEnterText.getText().toString() +
-        ", lowbarCrossed = " + lowBarCrossedEnterText.getText().toString() + ", lowbarhardCrossed = " + lowBarHardEnterText.getText().toString() + ", portcullisCrossed = " + 
-        portCullisCrossedEnterText.getText().toString() + ", portcullishardCrossed" + portCullisHardEnterText.getText().toString() + ", chevaldefriseCrossed = " + chevalEnterText.getText().toString() +
-        ", chevaldefrisehardCrossed = " + chevalHardEnterText.getText().toString() + ", moatCrossed = " + moatCrossedEnterText.getText().toString() + ", moathardCrossed = " +
-        moatHardEnterText.getText().toString() + ", rampartsCrossed = " + rampartsCrossedEnterText.getText().toString() + ", rampartshardCrossed = " + rampartsHardEnterText.getText().toString() +
-        ", drawbridgeCrossed = " + drawbridgeCrossedEnterText.getText().toString() + ", drawbridgehardCrossed = " + drawbridgeHardEnterText.getText().toString() + ", sallyportCrossed = " +
-        sallyCrossedEnterText.getText().toString() + ", sallyporthardCrossed = " + sallyHardEnterText.getText().toString() + ", rockwallCrossed = " + rockwallCrossedEnterText.getText().toString() +
-        ", rockwallhardCrossed = " + rockwallHardEnterText.getText().toString() + ", roughterrainCrossed = " + roughTerrainEnterText.getText().toString() + ", roughterrainhardCrossed = " +
-        roughTerrainHardEnterText.getText().toString() + ", robotChallenge = " + robotChallengeEnterText.getText().toString() + ", robotClimb = " + robotClimbEnterText.getText().toString() +
-        ", climbSpeed = " + climbSpeedEnterText.getText().toString() + ", climbSuccessful = " + climbSuccessEnterText.getText().toString() + ", robotNotes = " + notesEnterText.getText().toString() +
-        "WHERE _id = " + id);
+        try {
+            myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
+            myDB.execSQL("UPDATE MatchScouting SET teamName = '" + teamNameEnterText.getText().toString() + "', teamNumber = '" + teamNumberEnterText.getText().toString() +
+                    "', matchtype_number = " + matchNumberEnterText.getText().toString() + ", activeAuto = " + activeAutoEnterText.getText().toString() + ", spybotStart = " +
+                    spyBotStartEnterText.getText().toString() + ", defenseBreach = " + defenseBreachedEnterText.getText().toString() + ", autolowBar = " + autoLowBarEnterText.getText().toString() +
+                    ", autoportCullis = " + autoPortcullisEnterText.getText().toString() + ", autochevaldeFrise = " + autoChevalEnterText.getText().toString() + ", autoMoat = " +
+                    autoMoatEnterText.getText().toString() + ", autoRamparts = " + autoRampartsEnterText.getText().toString() + ", autodrawBridge = " + autoDrawBridgeEnterText.getText().toString() +
+                    ", autosallyPort = " + autoSallyEnterText.getText().toString() + ", autorockWall = " + autoRockWallEnterText.getText().toString() + ", autoroughTerrain = " +
+                    autoRoughTerrainEnterText.getText().toString() + ", autohighScored = " + autoHighGoalEnterText.getText().toString() + ", autolowScored = " + autoLowGoalEnterText.getText().toString() +
+                    ", shotsFired = " + shotsFiredEnterText.getText().toString() + ", highGoalsScored = " + highGoalsScoredEnterText.getText().toString() + ", lowgoalsScored = " + lowGoalsScoredEnterText.getText().toString() +
+                    ", lowbarCrossed = " + lowBarCrossedEnterText.getText().toString() + ", lowbarhardCrossed = " + lowBarHardEnterText.getText().toString() + ", portcullisCrossed = " +
+                    portCullisCrossedEnterText.getText().toString() + ", portcullishardCrossed = " + portCullisHardEnterText.getText().toString() + ", chevaldefriseCrossed = " + chevalEnterText.getText().toString() +
+                    ", chevaldefrisehardCrossed = " + chevalHardEnterText.getText().toString() + ", moatCrossed = " + moatCrossedEnterText.getText().toString() + ", moathardCrossed = " +
+                    moatHardEnterText.getText().toString() + ", rampartsCrossed = " + rampartsCrossedEnterText.getText().toString() + ", rampartshardCrossed = " + rampartsHardEnterText.getText().toString() +
+                    ", drawbridgeCrossed = " + drawbridgeCrossedEnterText.getText().toString() + ", drawbridgehardCrossed = " + drawbridgeHardEnterText.getText().toString() + ", sallyportCrossed = " +
+                    sallyCrossedEnterText.getText().toString() + ", sallyporthardCrossed = " + sallyHardEnterText.getText().toString() + ", rockwallCrossed = " + rockwallCrossedEnterText.getText().toString() +
+                    ", rockwallhardCrossed = " + rockwallHardEnterText.getText().toString() + ", roughterrainCrossed = " + roughTerrainCrossedEnterText.getText().toString() + ", roughterrainhardCrossed = " +
+                    roughTerrainHardEnterText.getText().toString() + ", robotChallenge = " + robotChallengeEnterText.getText().toString() + ", robotClimb = " + robotClimbEnterText.getText().toString() +
+                    ", climbSpeed = " + climbSpeedEnterText.getText().toString() + ", climbSuccessful = " + climbSuccessEnterText.getText().toString() + ", robotNotes = '" + notesEnterText.getText().toString() +
+                    "' WHERE _id = " + id);
+        }catch (SQLException e){
+            System.out.print(e);
+        }
         Cursor cur = myDB.rawQuery("SELECT * FROM MatchScouting WHERE _id =" + id, null);
         cur.moveToFirst();
         tNumber = cur.getString(cur.getColumnIndex("teamNumber"));
