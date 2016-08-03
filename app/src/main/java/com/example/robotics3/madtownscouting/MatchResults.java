@@ -43,6 +43,8 @@ public class MatchResults extends AppCompatActivity {
     Button preparedata;
     Button senddata;
     Button delete;
+    Button scrollToTop;
+    Button goHome;
     ListView lv;
     SQLiteDatabase myDB = null;
     Cursor c;
@@ -239,6 +241,7 @@ public class MatchResults extends AppCompatActivity {
                 lv = (ListView) findViewById(R.id.matchresultslistView);
                 matchAdapter = new MatchResultsAdapter(MatchResults.this, c1, 0);
                 lv.setAdapter(matchAdapter);
+                lv.setSelection(matchAdapter.getCount() - 1);
                 lv.setLongClickable(true);
                 lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
@@ -264,7 +267,7 @@ public class MatchResults extends AppCompatActivity {
                 int editID = Integer.valueOf(cur.getString(cur.getColumnIndex("_id")));
                 Intent editIntent = new Intent(getBaseContext(), EditScreen.class);
                 editIntent.putExtra("ID", editID);
-                startActivity(editIntent);
+                startActivityForResult(editIntent, 1);
                 return true;
             }
         });
@@ -275,6 +278,8 @@ public class MatchResults extends AppCompatActivity {
         preparedata = (Button) findViewById(R.id.preparedataButton);
         senddata = (Button) findViewById(R.id.senddataButton);
         delete = (Button) findViewById(R.id.deleteBtn);
+        scrollToTop = (Button) findViewById(R.id.scrollToTopButton);
+        goHome = (Button) findViewById(R.id.goHomeButton);
 
         preparedata.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -298,11 +303,36 @@ public class MatchResults extends AppCompatActivity {
                 myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
                 myDB.execSQL("DELETE FROM MatchScouting WHERE _id = " + id);
                 myDB.close();
+                matchAdapter.notifyDataSetChanged();
                 Toast.makeText(getApplicationContext(),"Team "+ tNumber + ", Match " + mNumber + " deleted", Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
-
+        scrollToTop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lv.smoothScrollToPosition(0);
+            }
+        });
+        
+        goHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), SelectTeam.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
+        
+        goHome.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(getApplicationContext(), Welcome.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
     }
 
     private class MyAsyncTask extends AsyncTask<String, Integer, Double> {
@@ -377,4 +407,19 @@ public class MatchResults extends AppCompatActivity {
         return result;
     }
 
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+    if (requestCode == 1) {
+        if(resultCode == Activity.RESULT_OK){
+            String match = data.getStringExtra("MATCH_NUMBER");
+            String teamN = data.getStringExtra("TEAM_NUMBER");
+            Toast.makeText(getApplicationContext(),"Team " + teamN + ", Match " + match + "updated.", Toast.LENGTH_SHORT).show();
+            matchAdapter.notifyDataSetChanged();
+        }
+        if (resultCode == Activity.RESULT_CANCELED) {
+            
+        }
+    }
+}
 }

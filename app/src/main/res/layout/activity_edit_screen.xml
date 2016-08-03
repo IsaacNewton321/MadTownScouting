@@ -551,7 +551,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
 
-    <TextView
+<TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -560,7 +560,7 @@
         android:layout_below="@+id/moatCrossedEnterText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-    <EditText
+<EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -570,8 +570,310 @@
         android:layout_below="@+id/moatHardText"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Ramparts Crossed"
+        android:id="@+id/rampartsCrossedText"
+        android:layout_below="@+id/moatCrossedEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/rampartsCrossedEnterText"
+        android:hint="Ramparts Crossed"
+        android:layout_below="@+id/rampartsCrossedText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Ramparts Hard Crossed"
+        android:id="@+id/rampartsHardText"
+        android:layout_below="@+id/rampartsCrossedEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/rampartsHardEnterText"
+        android:hint="Ramparts Hard Crossed"
+        android:layout_below="@+id/rampartsHardText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Drawbridge Crossed"
+        android:id="@+id/drawbridgeCrossedText"
+        android:layout_below="@+id/rampartsHardEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/drawbridgeCrossedEnterText"
+        android:hint="Drawbridge Crossed Crossed"
+        android:layout_below="@+id/drawbridgeCrossedText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Drawbridge Hard Crossed"
+        android:id="@+id/drawbridgeHardText"
+        android:layout_below="@+id/drawbridgeCrossedEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/drawbridgeHardEnterText"
+        android:hint="Drawbridge Hard Crossed"
+        android:layout_below="@+id/drawbridgeHardText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sallyport Crossed"
+        android:id="@+id/sallyCrossedText"
+        android:layout_below="@+id/drawbridgeHardEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/sallyCrossedEnterText"
+        android:hint="Sallyport Crossed"
+        android:layout_below="@+id/sallyCrossedText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sallyport Hard Crossed"
+        android:id="@+id/sallyHardText"
+        android:layout_below="@+id/sallyCrossedEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/sallyHardEnterText"
+        android:hint="Sallyport Hard Crossed"
+        android:layout_below="@+id/sallyHardText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Rockwall Crossed"
+        android:id="@+id/rockwallCrossedText"
+        android:layout_below="@+id/sallyHardEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/rockwallCrossedEnterText"
+        android:hint="Rockwall Crossed"
+        android:layout_below="@+id/rockwallCrossedText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Rockwall Hard Crossed"
+        android:id="@+id/rockwallHardText"
+        android:layout_below="@+id/rockwallCrossedEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/rockwallHardEnterText"
+        android:hint="Rockwall Hard Crossed"
+        android:layout_below="@+id/rockwallHardText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Rough Terrain Crossed"
+        android:id="@+id/roughTerrainCrossedText"
+        android:layout_below="@+id/rockwallHardEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/roughTerrainCrossedEnterText"
+        android:hint="Rough Terrain Crossed"
+        android:layout_below="@+id/roughTerrainCrossedText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Rough Terrain Hard Crossed"
+        android:id="@+id/roughTerrainHardText"
+        android:layout_below="@+id/roughTerrainCrossedEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/roughTerrainHardEnterText"
+        android:hint="Rough Terrain Hard Crossed"
+        android:layout_below="@+id/roughTerrainHardText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Robot Challenged"
+        android:id="@+id/robotChallengeText"
+        android:layout_below="@+id/roughTerrainHardEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/robotChallengeEnterText"
+        android:hint="Robot Challenged"
+        android:layout_below="@+id/robotChallengeText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Robot Climb"
+        android:id="@+id/robotClimbText"
+        android:layout_below="@+id/robotChallengeEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/robotClimbEnterText"
+        android:hint="Robot Climb"
+        android:layout_below="@+id/robotClimbText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Climb Speed"
+        android:id="@+id/climbSpeedText"
+        android:layout_below="@+id/robotClimbEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/climbSpeedEnterText"
+        android:hint="Climb Speed"
+        android:layout_below="@+id/climbSpeedText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="CLimb Successful"
+        android:id="@+id/climbSuccessText"
+        android:layout_below="@+id/climbSpeedEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/climbSuccessEnterText"
+        android:hint="Climb Successful"
+        android:layout_below="@+id/climbSuccessText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Robot Notes"
+        android:id="@+id/notesText"
+        android:layout_below="@+id/climbSuccessEnterText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/notesEnterText"
+        android:hint="Robot Notes"
+        android:layout_below="@+id/notesText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+<Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter"
+        android:id="@+id/confirmEditsButton"
+        android:layout_below="@+id/notesEnterText"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>
