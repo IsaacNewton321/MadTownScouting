@@ -181,6 +181,8 @@ int id;
     public void changeData(){
         try {
             myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
+            String notes = notesEnterText.getText().toString();
+            notes = notes.replace("'", "*");
             myDB.execSQL("UPDATE MatchScouting SET teamName = '" + teamNameEnterText.getText().toString() + "', teamNumber = '" + teamNumberEnterText.getText().toString() +
                     "', matchtype_number = " + matchNumberEnterText.getText().toString() + ", activeAuto = " + activeAutoEnterText.getText().toString() + ", spybotStart = " +
                     spyBotStartEnterText.getText().toString() + ", defenseBreach = " + defenseBreachedEnterText.getText().toString() + ", autolowBar = " + autoLowBarEnterText.getText().toString() +
@@ -197,7 +199,7 @@ int id;
                     sallyCrossedEnterText.getText().toString() + ", sallyporthardCrossed = " + sallyHardEnterText.getText().toString() + ", rockwallCrossed = " + rockwallCrossedEnterText.getText().toString() +
                     ", rockwallhardCrossed = " + rockwallHardEnterText.getText().toString() + ", roughterrainCrossed = " + roughTerrainCrossedEnterText.getText().toString() + ", roughterrainhardCrossed = " +
                     roughTerrainHardEnterText.getText().toString() + ", robotChallenge = " + robotChallengeEnterText.getText().toString() + ", robotClimb = " + robotClimbEnterText.getText().toString() +
-                    ", climbSpeed = " + climbSpeedEnterText.getText().toString() + ", climbSuccessful = " + climbSuccessEnterText.getText().toString() + ", robotNotes = '" + notesEnterText.getText().toString() +
+                    ", climbSpeed = " + climbSpeedEnterText.getText().toString() + ", climbSuccessful = " + climbSuccessEnterText.getText().toString() + ", robotNotes = '" + notes +
                     "' WHERE _id = " + id);
         }catch (SQLException e){
             System.out.print(e);
