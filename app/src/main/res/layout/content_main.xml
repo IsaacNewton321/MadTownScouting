@@ -33,4 +33,14 @@
         android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Photos"
+        android:id="@+id/addPicturesButton"
+        android:layout_below="@+id/websiteButton"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

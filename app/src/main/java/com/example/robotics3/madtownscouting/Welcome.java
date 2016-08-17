@@ -17,9 +17,11 @@ public class Welcome extends AppCompatActivity {
     Button scoutingButton;
     Button teamsButton;
     Button webButton;
+    Button picturesButton;
     Intent scoutingIntent;
     Intent teamIntent;
     Intent webIntent;
+    Intent picturesIntent;
     SQLiteDatabase myDB = null;
     String TeamData = "TeamRoster";
     String MatchData = "MatchScouting";
@@ -32,6 +34,7 @@ public class Welcome extends AppCompatActivity {
         setSupportActionBar(toolbar);
         scoutingButton = (Button) findViewById(R.id.scoutingButton);
         webButton = (Button) findViewById(R.id.websiteButton);
+        picturesButton = (Button) findViewById(R.id.addPicturesButton);
         scoutingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +45,12 @@ public class Welcome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 webMenu();
+            }
+        });
+        picturesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                picturesMenu();
             }
         });
         createDatabase();
@@ -55,6 +64,10 @@ public class Welcome extends AppCompatActivity {
     public void webMenu() {
         webIntent = new Intent(this, SendData.class);
         startActivity(webIntent);
+    }
+    public void picturesMenu(){
+        picturesIntent = new Intent(this, PicturesMenu.class);
+        startActivity(picturesIntent);
     }
 
     @Override
