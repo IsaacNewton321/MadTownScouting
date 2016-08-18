@@ -33,8 +33,8 @@ public class Welcome extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         scoutingButton = (Button) findViewById(R.id.scoutingButton);
-        webButton = (Button) findViewById(R.id.websiteButton);
-        picturesButton = (Button) findViewById(R.id.addPicturesButton);
+        webButton = (Button) findViewById(R.id.webButton);
+        picturesButton = (Button) findViewById(R.id.PicturesButton);
         scoutingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Send to Web"
-        android:id="@+id/websiteButton"
+        android:id="@+id/webButton"
         android:layout_below="@+id/scoutingButton"
         android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true" />
@@ -38,8 +38,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Photos"
-        android:id="@+id/addPicturesButton"
-        android:layout_below="@+id/websiteButton"
+        android:id="@+id/PicturesButton"
+        android:layout_below="@+id/webButton"
         android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true" />
 
