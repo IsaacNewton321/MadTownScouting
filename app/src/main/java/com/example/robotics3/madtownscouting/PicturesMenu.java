@@ -81,8 +81,7 @@ public class PicturesMenu extends AppCompatActivity {
         // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 0 && resultCode == RESULT_OK) {
-            bp = (Bitmap) data.getExtras().get("data");
-            img.setImageBitmap(Bitmap.createScaledBitmap(bp, height, width, false));
+            getLastImage();
         }else if(requestCode == 1 && resultCode == RESULT_OK){
             Uri imageUri = data.getData();
             String path = imageUri.getPath();
@@ -131,5 +130,26 @@ public class PicturesMenu extends AppCompatActivity {
         matrix.postRotate(angle);
         return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix,
                 true);
+    }
+    public void getLastImage(){
+        String[] projection = new String[]{
+    MediaStore.Images.ImageColumns._ID,
+    MediaStore.Images.ImageColumns.DATA,
+    MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME,
+    MediaStore.Images.ImageColumns.DATE_TAKEN,
+    MediaStore.Images.ImageColumns.MIME_TYPE
+    };
+final Cursor cursor = getContentResolver()
+        .query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, null, 
+               null, MediaStore.Images.ImageColumns.DATE_TAKEN + " DESC");
+               
+    if (cursor.moveToFirst()) {
+    String imageLocation = cursor.getString(1);
+    File imageFile = new File(imageLocation);
+    if (imageFile.exists()) {   // TODO: is there a better way to do this?
+        bp = BitmapFactory.decodeFile(imageLocation);
+        imageView.setImageBitmap(bp);         
+    }
+} 
     }
 }
