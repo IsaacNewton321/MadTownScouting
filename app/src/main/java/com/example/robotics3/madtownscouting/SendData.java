@@ -253,7 +253,6 @@ public class SendData extends AppCompatActivity {
                 query = "SELECT * FROM MatchScouting WHERE teamNumber = " + search;
             }else{
                 String search = intent.getStringExtra("SEARCH");
-                search = search.replace(" ", "");
                 search = search.replaceAll("[^\\d.]", "");
                 query = "SELECT * FROM MatchScouting WHERE teamNumber = " + search + "OR matchtype_number = " + search;
             }
