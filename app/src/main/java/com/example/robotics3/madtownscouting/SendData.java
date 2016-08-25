@@ -254,7 +254,7 @@ public class SendData extends AppCompatActivity {
             }else{
                 String search = intent.getStringExtra("SEARCH");
                 search = search.replaceAll("[^\\d.]", "");
-                query = "SELECT * FROM MatchScouting WHERE teamNumber = " + search + "OR matchtype_number = " + search;
+                query = "SELECT * FROM MatchScouting WHERE teamNumber = " + search + " OR matchtype_number = " + search;
             }
         }
         myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);

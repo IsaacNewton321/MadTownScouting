@@ -38,7 +38,7 @@
         android:layout_marginTop="25dp"
         android:layout_below="@+id/cameraRollButton"
         android:layout_centerHorizontal="true"
-        android:hint="Enter Picture&apos;s Team Number" />
+        android:hint="Picture&apos;s Team #" />
 
     <ImageView
         android:layout_width="match_parent"

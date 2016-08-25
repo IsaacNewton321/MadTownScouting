@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.Point;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,6 +27,8 @@ public class PicturesMenu extends AppCompatActivity {
     Button savePictureButton;
     ImageView img;
     Bitmap bp = null;
+    int width;
+    int height;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,11 @@ public class PicturesMenu extends AppCompatActivity {
         cameraRoll = (Button) findViewById(R.id.cameraRollButton);
         savePictureButton = (Button) findViewById(R.id.savePicButton);
         img = (ImageView) findViewById(R.id.imageView);
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        width = size.x;
+        height = size.y;
 
         if(savedInstanceState != null){
             bp = BitmapFactory.decodeByteArray(savedInstanceState.getByteArray("bp"), 0, savedInstanceState.getByteArray("bp").length);
@@ -73,7 +82,7 @@ public class PicturesMenu extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 0 && resultCode == RESULT_OK) {
             bp = (Bitmap) data.getExtras().get("data");
-            img.setImageBitmap(bp);
+            img.setImageBitmap(Bitmap.createScaledBitmap(bp, height, width, false));
         }else if(requestCode == 1 && resultCode == RESULT_OK){
             Uri imageUri = data.getData();
             String path = imageUri.getPath();
