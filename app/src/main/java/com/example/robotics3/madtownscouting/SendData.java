@@ -401,12 +401,10 @@ public class SendData extends AppCompatActivity {
         inputStream.close();
         return result;
     }
-    public void DeleteData(){
+    public void updateList(){
         myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
-       // c = myDB.rawQuery("SELECT * FROM MatchScouting WHERE _id =" + id, null);
-        myDB.execSQL("DELETE FROM MatchScouting WHERE _id = " + id);
-      // myDB.close();
-        Toast.makeText(getApplicationContext(),"Match Deleted", Toast.LENGTH_SHORT).show();
+        Cursor c2  = myDB.rawQuery(query, null);
+        matchAdapter.changeCursor(c2);
     }
     @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -416,7 +414,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             String match = data.getStringExtra("MATCH_NUMBER");
             String teamN = data.getStringExtra("TEAM_NUMBER");
             Toast.makeText(getApplicationContext(),"Team " + teamN + ", Match " + match + "updated.", Toast.LENGTH_SHORT).show();
-            matchAdapter.notifyDataSetChanged();
+            updateList();
         }
         if (resultCode == Activity.RESULT_CANCELED) {
             
