@@ -324,7 +324,7 @@ public class MatchResults extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(getApplicationContext(), Welcome.class);
+                Intent i = new Intent(getApplicationContext(), MainMenu.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 return true;

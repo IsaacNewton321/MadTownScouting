@@ -96,7 +96,7 @@
         android:layout_height="wrap_content"
         android:text="Enter Data"
         android:id="@+id/enterautoDataButton"
-        android:layout_below="@+id/lowgoalnoButton"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
     <TextView
