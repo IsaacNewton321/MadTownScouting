@@ -1,6 +1,7 @@
 package com.example.robotics3.madtownscouting;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -8,11 +9,13 @@ import android.graphics.Point;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.io.ByteArrayOutputStream;
@@ -25,6 +28,7 @@ public class PicturesMenu extends AppCompatActivity {
     Button cameraButton;
     Button cameraRoll;
     Button savePictureButton;
+    ImageButton rotateBtn;
     ImageView img;
     Bitmap bp = null;
     int width;
@@ -37,6 +41,7 @@ public class PicturesMenu extends AppCompatActivity {
         cameraButton = (Button) findViewById(R.id.camButton);
         cameraRoll = (Button) findViewById(R.id.cameraRollButton);
         savePictureButton = (Button) findViewById(R.id.savePicButton);
+        rotateBtn = (ImageButton) findViewById(R.id.imageButton);
         img = (ImageView) findViewById(R.id.imageView);
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
@@ -59,6 +64,15 @@ public class PicturesMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cameraRollOpen();
+            }
+        });
+        rotateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(bp != null){
+                    bp = rotateImage(bp, 90);
+                    img.setImageBitmap(bp);
+                }
             }
         });
     }
@@ -148,7 +162,7 @@ final Cursor cursor = getContentResolver()
     File imageFile = new File(imageLocation);
     if (imageFile.exists()) {   // TODO: is there a better way to do this?
         bp = BitmapFactory.decodeFile(imageLocation);
-        imageView.setImageBitmap(bp);         
+        img.setImageBitmap(bp);
     }
 } 
     }
