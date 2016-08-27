@@ -1,7 +1,9 @@
 package com.example.robotics3.madtownscouting;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -15,8 +17,10 @@ import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -31,8 +35,12 @@ public class PicturesMenu extends AppCompatActivity {
     ImageButton rotateBtn;
     ImageView img;
     Bitmap bp = null;
+    EditText teamNumberEnter;
     int width;
     int height;
+    String teamNumber;
+    SQLiteDatabase myDB = null;
+    Cursor c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +51,7 @@ public class PicturesMenu extends AppCompatActivity {
         savePictureButton = (Button) findViewById(R.id.savePicButton);
         rotateBtn = (ImageButton) findViewById(R.id.imageButton);
         img = (ImageView) findViewById(R.id.imageView);
+        teamNumberEnter = (EditText) findViewById(R.id.photoNumberEditText);
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -73,6 +82,12 @@ public class PicturesMenu extends AppCompatActivity {
                     bp = rotateImage(bp, 90);
                     img.setImageBitmap(bp);
                 }
+            }
+        });
+        savePictureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                savePic();
             }
         });
     }
@@ -132,10 +147,8 @@ public class PicturesMenu extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         if(bp != null) {
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            byte[] byteArray = stream.toByteArray();
-            outState.putByteArray("bp", byteArray);
+            byte[] bytes = bitmapToByteArray();
+            outState.putByteArray("bp", bytes);
         }
     }
 
@@ -165,5 +178,31 @@ final Cursor cursor = getContentResolver()
         img.setImageBitmap(bp);
     }
 } 
+    }
+
+    public void savePic(){
+        teamNumber = teamNumberEnter.getText().toString();
+        ContentValues args = new ContentValues();
+        byte[] bytes = bitmapToByteArray();
+        if(bytes != null) {
+            myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
+
+                args.put("teamNumber", teamNumber);
+                args.put("pic1", bytes);
+                myDB.insert("TeamPictures", null, args);
+            myDB.close();
+            Toast.makeText(getApplicationContext(), "Saved Picture!", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getApplicationContext(), "Select a picture to save!", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public byte[] bitmapToByteArray(){
+        byte[] byteArray = null;
+        if(bp != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byteArray = stream.toByteArray();
+        }
+        return byteArray;
     }
 }

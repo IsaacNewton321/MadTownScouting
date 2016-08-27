@@ -15,10 +15,13 @@ public class MainMenu extends AppCompatActivity {
     EditText searchBox;
     Button webButton;
     Button picturesButton;
+    Button viewPicsButton;
     Intent webIntent;
     Intent picturesIntent;
+    Intent galleryIntent;
     SQLiteDatabase myDB;
     String MatchData = "MatchScouting";
+    String PicData = "TeamPictures";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,7 @@ public class MainMenu extends AppCompatActivity {
         Button enterSearch = (Button)findViewById(R.id.enterSearchButton);
         webButton = (Button) findViewById(R.id.websiteButton);
         picturesButton = (Button) findViewById(R.id.addPicturesButton);
+        viewPicsButton = (Button) findViewById(R.id.viewPicsButton);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         teamsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +65,14 @@ public class MainMenu extends AppCompatActivity {
                 picturesMenu();
             }
         });
+        viewPicsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gallery();
+            }
+        });
         createMatchScoutingDatabase();
+        createPicturesDatabase();
     }
 
     public void loadteamRosterScreen(){
@@ -88,6 +99,11 @@ public class MainMenu extends AppCompatActivity {
         startActivity(picturesIntent);
     }
 
+    public void gallery(){
+        galleryIntent = new Intent(this, TeamPictureSelection.class);
+        startActivity(galleryIntent);
+    }
+
     public void createMatchScoutingDatabase() {
         try {
             myDB = this.openOrCreateDatabase("FRC", MODE_PRIVATE, null);
@@ -102,6 +118,16 @@ public class MainMenu extends AppCompatActivity {
                     " rampartsCrossed int, rampartshardCrossed int, drawbridgeCrossed int, drawbridgehardCrossed int," +
                     " sallyportCrossed int, sallyporthardCrossed int, rockwallCrossed int, rockwallhardCrossed int," +
                     " roughterrainCrossed int, roughterrainhardCrossed int, robotChallenge int, robotClimb int, climbSpeed int, climbSuccessful int)");
+            if (myDB != null)
+                myDB.close();
+        } catch (SQLException e) {
+            Log.e("Error", "Error", e);
+        }
+    }
+    public void createPicturesDatabase(){
+        try{
+            myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
+            myDB.execSQL("CREATE TABLE IF NOT EXISTS " + PicData + " ( _id INTEGER PRIMARY KEY AUTOINCREMENT, teamNumber int, pic1 BLOB)");
             if (myDB != null)
                 myDB.close();
         } catch (SQLException e) {

@@ -16,9 +16,15 @@ public class TeamListAdapter extends CursorAdapter {
     private LayoutInflater cursorInflater;
     private Context mContext;
     TeamRoster teams;
-    public TeamListAdapter(Context context, Cursor c, int flags){
+    String precursor;
+    public TeamListAdapter(Context context, Cursor c, int flags, int pics){
         super(context, c, flags);
         mContext = context;
+        if(pics == 0){
+            precursor = "Matches Played: ";
+        }else {
+            precursor = "Pictures: ";
+        }
     }
 
 
@@ -29,7 +35,7 @@ public class TeamListAdapter extends CursorAdapter {
         TextView teamNumberTextView = (TextView) view.findViewById(R.id.teamNumberText);
         teamNumberTextView.setText("Team " + cursor.getString(cursor.getColumnIndex("teamNumber")));
         TextView matchesPlayedTextView = (TextView) view.findViewById(R.id.matchesPlayedText);
-        matchesPlayedTextView.setText("Matches Played:  " + cursor.getString(cursor.getColumnIndex("matchCount")));
+        matchesPlayedTextView.setText(precursor + cursor.getString(cursor.getColumnIndex("matchCount")));
     }
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {

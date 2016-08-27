@@ -32,7 +32,7 @@ public class TeamRoster extends AppCompatActivity {
         if (i > 0) {
             try {
                 teamrosterlistView = (ListView) findViewById(R.id.teamrosterlistView);
-                teamAdapter = new TeamListAdapter(TeamRoster.this, c, 0);
+                teamAdapter = new TeamListAdapter(TeamRoster.this, c, 0, 0);
                 teamrosterlistView.setAdapter(teamAdapter);
                 teamrosterlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
