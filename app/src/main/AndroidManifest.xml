@@ -43,7 +43,8 @@
         <activity android:name=".EditScreen" />
         <activity android:name=".PicturesMenu" />
         <activity android:name=".TeamPictureSelection" />
-        <activity android:name=".PictureList"></activity>
+        <activity android:name=".PictureList" />
+        <activity android:name=".UploadPicture"></activity>
     </application>
 
 </manifest>
