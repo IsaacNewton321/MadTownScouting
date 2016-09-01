@@ -21,7 +21,7 @@ ListView teamsLV;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_picture_selection);
         teamsLV = (ListView) findViewById(R.id.TeamPicturesListView);
-        intent = new Intent(this, PictureList.class);
+        intent = new Intent(this, UploadPicture.class);
         myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
         c = myDB.rawQuery("SELECT teamNumber,_id, count(teamNumber) AS matchCount FROM TeamPictures GROUP BY teamNumber ORDER BY teamNumber asc", null);
         c.moveToFirst();
