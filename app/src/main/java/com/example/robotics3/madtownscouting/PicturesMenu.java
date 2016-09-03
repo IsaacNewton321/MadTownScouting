@@ -12,6 +12,7 @@ import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
@@ -27,6 +28,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class PicturesMenu extends AppCompatActivity {
     Button cameraButton;
@@ -39,8 +42,10 @@ public class PicturesMenu extends AppCompatActivity {
     int width;
     int height;
     String teamNumber;
+    String mCurrentPhotoPath;
     SQLiteDatabase myDB = null;
     Cursor c;
+    static final int REQUEST_TAKE_PHOTO = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,8 +98,26 @@ public class PicturesMenu extends AppCompatActivity {
     }
 
     public void accessCamera(){
-        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, 0);
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                Uri photoURI = FileProvider.getUriForFile(this,
+                        "com.example.robotics3.madtownscouting",
+                        photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+            }
+        }
     }
 
     public void cameraRollOpen(){
@@ -110,7 +133,8 @@ public class PicturesMenu extends AppCompatActivity {
         // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 0 && resultCode == RESULT_OK) {
-            getLastImage();
+            bp = BitmapFactory.decodeFile(mCurrentPhotoPath);
+            img.setImageBitmap(bp);
         }else if(requestCode == 1 && resultCode == RESULT_OK){
             Uri imageUri = data.getData();
             String path = imageUri.getPath();
@@ -158,32 +182,12 @@ public class PicturesMenu extends AppCompatActivity {
         return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix,
                 true);
     }
-    public void getLastImage(){
-        String[] projection = new String[]{
-    MediaStore.Images.ImageColumns._ID,
-    MediaStore.Images.ImageColumns.DATA,
-    MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME,
-    MediaStore.Images.ImageColumns.DATE_TAKEN,
-    MediaStore.Images.ImageColumns.MIME_TYPE
-    };
-final Cursor cursor = getContentResolver()
-        .query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, null, 
-               null, MediaStore.Images.ImageColumns.DATE_TAKEN + " DESC");
-               
-    if (cursor.moveToFirst()) {
-    String imageLocation = cursor.getString(1);
-    File imageFile = new File(imageLocation);
-    if (imageFile.exists()) {   // TODO: is there a better way to do this?
-        bp = BitmapFactory.decodeFile(imageLocation);
-        img.setImageBitmap(bp);
-    }
-} 
-    }
+
 
     public void savePic(){
         teamNumber = teamNumberEnter.getText().toString();
         ContentValues args = new ContentValues();
-        byte[] bytes = bitmapToByteArray();
+        byte[] bytes = null;
         if(bytes != null) {
             myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
 
@@ -204,5 +208,20 @@ final Cursor cursor = getContentResolver()
             byteArray = stream.toByteArray();
         }
         return byteArray;
+    }
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = "file:" + image.getAbsolutePath();
+        return image;
     }
 }

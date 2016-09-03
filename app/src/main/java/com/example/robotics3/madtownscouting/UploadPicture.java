@@ -27,13 +27,21 @@ public class UploadPicture extends AppCompatActivity {
         setContentView(R.layout.activity_upload_picture);
         picUploadButton = (Button) findViewById(R.id.picUploadButton);
         picPreview = (ImageView) findViewById(R.id.picUploadPreview);
+        String[] columns = new String[]{
+                "_id",
+                "teamNumber",
+        };
         Intent intent = getIntent();
         teamNumber = intent.getStringExtra("TEAM_NUMBER");
         myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
-        c = myDB.rawQuery("SELECT * FROM TeamPictures WHERE teamNumber = " + teamNumber, null);
+        c = myDB.query("TeamPictures", columns, "teamNumber = ?", new String[]{teamNumber}, null, null, null);
         c.moveToFirst();
         try {
-            bytes = c.getBlob(c.getColumnIndexOrThrow("pic1"));
+            if(c.getCount() > 0) {
+               // bytes = c.getBlob(c.getColumnIndexOrThrow("pic1"));
+                String id = c.getString(c.getColumnIndexOrThrow("_id"));
+                Log.d("id", id);
+            }
         } catch (Exception e) {
             Log.d("ERROR", e.toString());
         }
