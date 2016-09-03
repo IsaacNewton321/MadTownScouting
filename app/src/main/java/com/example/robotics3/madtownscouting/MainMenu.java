@@ -127,7 +127,7 @@ public class MainMenu extends AppCompatActivity {
     public void createPicturesDatabase(){
         try{
             myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
-            myDB.execSQL("CREATE TABLE IF NOT EXISTS " + PicData + " ( _id INTEGER PRIMARY KEY AUTOINCREMENT, teamNumber int, pic1 BLOB)");
+            myDB.execSQL("CREATE TABLE IF NOT EXISTS " + PicData + " ( _id INTEGER PRIMARY KEY AUTOINCREMENT, teamNumber int, pic1 VARCHAR)");
             if (myDB != null)
                 myDB.close();
         } catch (SQLException e) {

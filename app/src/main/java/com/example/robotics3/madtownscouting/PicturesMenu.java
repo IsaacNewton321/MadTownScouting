@@ -26,6 +26,7 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -43,6 +44,8 @@ public class PicturesMenu extends AppCompatActivity {
     int height;
     String teamNumber;
     String mCurrentPhotoPath;
+    String imageFileName;
+    String fname = null;
     SQLiteDatabase myDB = null;
     Cursor c;
     static final int REQUEST_TAKE_PHOTO = 0;
@@ -112,7 +115,7 @@ public class PicturesMenu extends AppCompatActivity {
             // Continue only if the File was successfully created
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(this,
-                        "com.example.robotics3.madtownscouting",
+                        "com.example.android.fileprovider",
                         photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
@@ -133,32 +136,42 @@ public class PicturesMenu extends AppCompatActivity {
         // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 0 && resultCode == RESULT_OK) {
-            bp = BitmapFactory.decodeFile(mCurrentPhotoPath);
+            bp = BitmapFactory.decodeFile(fname);
             img.setImageBitmap(bp);
         }else if(requestCode == 1 && resultCode == RESULT_OK){
             Uri imageUri = data.getData();
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
             String path = imageUri.getPath();
             InputStream inputStream;
             try {
                 inputStream = getContentResolver().openInputStream(imageUri);
                 bp = BitmapFactory.decodeStream(inputStream);
-                ExifInterface ei = new ExifInterface(path);
+
+                Cursor cursor = getContentResolver().query(imageUri, filePathColumn, null, null, null);
+                cursor.moveToFirst();
+
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                 String filePath = cursor.getString(columnIndex);
+                cursor.close();
+
+                ExifInterface ei = new ExifInterface(filePath);
                 int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION,6);
                 switch(orientation) {
                     case ExifInterface.ORIENTATION_ROTATE_90:
-                        rotateImage(bp, 90);
+                        bp = rotateImage(bp, 90);
                         break;
                     case ExifInterface.ORIENTATION_ROTATE_180:
-                        rotateImage(bp, 180);
+                        bp = rotateImage(bp, 180);
                         break;
                     case ExifInterface.ORIENTATION_ROTATE_270:
-                        rotateImage(bp, 270);
+                        bp = rotateImage(bp, 270);
                         break;
                     case ExifInterface.ORIENTATION_NORMAL:
                     default:
                         break;
                 }
                 img.setImageBitmap(bp);
+                saveToDirectory(bp);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -187,18 +200,16 @@ public class PicturesMenu extends AppCompatActivity {
     public void savePic(){
         teamNumber = teamNumberEnter.getText().toString();
         ContentValues args = new ContentValues();
-        byte[] bytes = null;
-        if(bytes != null) {
             myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
-
+            if(fname != null) {
                 args.put("teamNumber", teamNumber);
-                args.put("pic1", bytes);
+                args.put("pic1", fname);
                 myDB.insert("TeamPictures", null, args);
-            myDB.close();
-            Toast.makeText(getApplicationContext(), "Saved Picture!", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(getApplicationContext(), "Select a picture to save!", Toast.LENGTH_SHORT).show();
-        }
+                myDB.close();
+                Toast.makeText(getApplicationContext(), "Saved Picture!", Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(getApplicationContext(), "Select a picture to save!", Toast.LENGTH_SHORT).show();
+            }
     }
     public byte[] bitmapToByteArray(){
         byte[] byteArray = null;
@@ -212,16 +223,38 @@ public class PicturesMenu extends AppCompatActivity {
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
+        imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
+        File image = new File(
+                storageDir,
+                imageFileName+  /* prefix */
+                ".jpg"         /* suffix */
+                      /* directory */
         );
 
         // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = "file:" + image.getAbsolutePath();
+        mCurrentPhotoPath = "file:/" + image.getAbsolutePath();
+        fname = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), imageFileName).getAbsolutePath();
+        fname += ".jpg";
         return image;
+    }
+
+    private void saveToDirectory(Bitmap bitmapImage){
+        FileOutputStream fos = null;
+        try {
+            File file = createImageFile();
+            fos = new FileOutputStream(file);
+            bitmapImage.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if( fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }
