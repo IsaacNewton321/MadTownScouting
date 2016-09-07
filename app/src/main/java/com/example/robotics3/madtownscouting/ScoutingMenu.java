@@ -109,7 +109,7 @@ public class ScoutingMenu extends AppCompatActivity {
         matchtype_number = bundle.getInt("MATCHTYPENUMBER", 0);
         robotNotes = bundle.getString("ROBOTNOTES");
 
-        robotNotes = robotNotes.replace("'", "");
+        robotNotes = robotNotes.replace("'", "\'");
 
         autoPeriodActivtated = bundle.getInt("AUTO");
         spybotstart = bundle.getInt("SPYBOT");

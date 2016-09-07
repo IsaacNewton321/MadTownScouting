@@ -182,7 +182,7 @@ int id;
         try {
             myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
             String notes = notesEnterText.getText().toString();
-            notes = notes.replace("'", "*");
+            notes = notes.replace("'", "\'");
             myDB.execSQL("UPDATE MatchScouting SET teamName = '" + teamNameEnterText.getText().toString() + "', teamNumber = '" + teamNumberEnterText.getText().toString() +
                     "', matchtype_number = " + matchNumberEnterText.getText().toString() + ", activeAuto = " + activeAutoEnterText.getText().toString() + ", spybotStart = " +
                     spyBotStartEnterText.getText().toString() + ", defenseBreach = " + defenseBreachedEnterText.getText().toString() + ", autolowBar = " + autoLowBarEnterText.getText().toString() +
