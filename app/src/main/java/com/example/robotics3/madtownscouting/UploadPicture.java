@@ -38,6 +38,7 @@ public class UploadPicture extends AppCompatActivity {
     ExifInterface ei;
     ProgressDialog dialog;
     TextView message;
+    String teamNumber;
     private String SERVER_URL = "http://www.gorohi.com/1323/data.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,7 @@ public class UploadPicture extends AppCompatActivity {
         try {
             if(c.getCount() > 0) {
                 selectedFilePath = c.getString(c.getColumnIndex("pic1"));
+                teamNumber = c.getString(c.getColumnIndexOrThrow("teamNumber"));
                 bp = BitmapFactory.decodeFile(selectedFilePath);
                 ei = new ExifInterface(selectedFilePath);
             }
@@ -153,6 +155,7 @@ public class UploadPicture extends AppCompatActivity {
                 connection.setRequestProperty("ENCTYPE", "multipart/form-data");
                 connection.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
                 connection.setRequestProperty("uploaded_file", selectedFilePath);
+                connection.setRequestProperty("Name", teamNumber);
 
                 dataOutputStream = new DataOutputStream(connection.getOutputStream());
 
