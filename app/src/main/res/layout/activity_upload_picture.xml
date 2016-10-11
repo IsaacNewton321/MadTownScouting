@@ -12,16 +12,24 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Upload Photo"
         android:id="@+id/picUploadButton"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:id="@+id/homeButton"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/picUploadButton"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/picUploadPreview"
-        android:layout_below="@+id/picUploadButton"
+        android:layout_below="@+id/homeButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp" />
 </RelativeLayout>
