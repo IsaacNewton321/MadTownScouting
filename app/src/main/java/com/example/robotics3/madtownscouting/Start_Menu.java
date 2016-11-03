@@ -1,44 +1,57 @@
 package com.example.robotics3.madtownscouting;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 
-public class Welcome extends AppCompatActivity {
-    Button scoutingButton;
-    Button teamsButton;
+public class Start_Menu extends AppCompatActivity {
+    EditText searchBox;
     Button webButton;
     Button picturesButton;
-    Intent scoutingIntent;
-    Intent teamIntent;
+    Button viewPicsButton;
     Intent webIntent;
     Intent picturesIntent;
-    SQLiteDatabase myDB = null;
-    String TeamData = "TeamRoster";
+    Intent galleryIntent;
+    SQLiteDatabase myDB;
     String MatchData = "MatchScouting";
+    String PicData = "TeamPictures";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        scoutingButton = (Button) findViewById(R.id.scoutingButton);
-        webButton = (Button) findViewById(R.id.webButton);
-        picturesButton = (Button) findViewById(R.id.PicturesButton);
-        scoutingButton.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_start__menu);
+        Button teamsButton = (Button)findViewById(R.id.teamsButton);
+        Button scoutButton = (Button)findViewById(R.id.scoutButton);
+        searchBox = (EditText)findViewById(R.id.searchField);
+        Button enterSearch = (Button)findViewById(R.id.enterSearchButton);
+        webButton = (Button) findViewById(R.id.websiteButton);
+        picturesButton = (Button) findViewById(R.id.addPicturesButton);
+        viewPicsButton = (Button) findViewById(R.id.viewPicsButton);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        teamsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                scoutingMenu();
+                loadteamRosterScreen();
+            }
+        });
+
+        scoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadselectteamScreen();
+            }
+        });
+        enterSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Search();
             }
         });
         webButton.setOnClickListener(new View.OnClickListener() {
@@ -53,14 +66,31 @@ public class Welcome extends AppCompatActivity {
                 picturesMenu();
             }
         });
-        createDatabase();
+        viewPicsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gallery();
+            }
+        });
         createMatchScoutingDatabase();
+        createPicturesDatabase();
     }
 
-    public void scoutingMenu() {
-        scoutingIntent = new Intent(this, MainMenu.class);
-        startActivity(scoutingIntent);
+    public void loadteamRosterScreen(){
+        Intent scoutingScreen = new Intent(this,TeamRoster.class);
+        startActivity(scoutingScreen);
     }
+
+    public void loadselectteamScreen(){
+        Intent selectteamScreen = new Intent(this,SelectTeam.class);
+        startActivity(selectteamScreen);
+    }
+    public void Search(){
+        Intent sendData = new Intent(this, SendData.class);
+        sendData.putExtra("SEARCH", searchBox.getText().toString());
+        startActivity(sendData);
+    }
+
     public void webMenu() {
         webIntent = new Intent(this, SendData.class);
         startActivity(webIntent);
@@ -70,32 +100,9 @@ public class Welcome extends AppCompatActivity {
         startActivity(picturesIntent);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    public void createDatabase() {
-        try {
-            myDB = this.openOrCreateDatabase("FRC", MODE_PRIVATE, null);
-
-   /* Create a Table in the Database. */
-            myDB.execSQL("CREATE TABLE IF NOT EXISTS "
-                    + TeamData
-                    + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, teamNumber VARCHAR, teamName VARCHAR);");
- /*           myDB.execSQL("INSERT INTO "
-                    + TeamData
-                    + " (teamNumber, teamName, location)"
-                    + " VALUES (1324, 'MadTown Robotics', 'Madera, Ca');");*/
-            Cursor c = myDB.rawQuery("SELECT * FROM " + TeamData, null);
-            if (myDB != null)
-                myDB.close();
-            c.close();
-        } catch (SQLException e) {
-            Log.e("Error", "Error", e);
-        }
+    public void gallery(){
+        galleryIntent = new Intent(this, TeamPictureSelection.class);
+        startActivity(galleryIntent);
     }
 
     public void createMatchScoutingDatabase() {
@@ -118,19 +125,15 @@ public class Welcome extends AppCompatActivity {
             Log.e("Error", "Error", e);
         }
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public void createPicturesDatabase(){
+        try{
+            myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
+            myDB.execSQL("CREATE TABLE IF NOT EXISTS " + PicData + " ( _id INTEGER PRIMARY KEY AUTOINCREMENT, teamNumber int, pic1 VARCHAR)");
+            if (myDB != null)
+                myDB.close();
+        } catch (SQLException e) {
+            Log.e("Error", "Error", e);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 }
+
