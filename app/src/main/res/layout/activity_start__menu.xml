@@ -38,7 +38,9 @@
         android:layout_marginTop="107dp"
         android:layout_below="@+id/enterSearchButton"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/addPicturesButton"
+        android:layout_alignEnd="@+id/addPicturesButton" />
 
     <Button
         android:layout_width="wrap_content"
@@ -48,7 +50,9 @@
         android:layout_below="@+id/searchField"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="43dp" />
+        android:layout_marginTop="43dp"
+        android:layout_alignRight="@+id/teamsButton"
+        android:layout_alignEnd="@+id/teamsButton" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -89,7 +93,9 @@
         android:layout_below="@+id/addPicturesButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="23dp" />
+        android:layout_marginTop="23dp"
+        android:layout_alignRight="@+id/addPicturesButton"
+        android:layout_alignEnd="@+id/addPicturesButton" />
 
 </RelativeLayout>
 </ScrollView>
