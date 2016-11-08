@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
@@ -205,6 +206,7 @@ public class Accuracy_Precision extends AppCompatActivity {
         robotclimbyesButton = (Button) findViewById(R.id.robotclimbyesButton);
         robotclimbnoButton = (Button) findViewById(R.id.robotclimbnoButton);
         climbdetail2Text = (TextView) findViewById(R.id.climbdetail2Text);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         climbdetail2Text.setVisibility(View.GONE);
         climbspeedseekBar = (SeekBar) findViewById(R.id.climbspeedseekBar);
         climbspeedseekBar.setVisibility(View.GONE);
