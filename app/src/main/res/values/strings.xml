@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Welcome to MadTown Robotics Scouting App.</string>
+    <string name="app_name">Madtown Scouting</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main_menu">Main Menu</string>
     <string name="title_activity_ScoutingMenu">ScoutingMenu</string>

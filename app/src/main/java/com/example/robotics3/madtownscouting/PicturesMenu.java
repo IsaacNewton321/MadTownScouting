@@ -37,6 +37,7 @@ public class PicturesMenu extends AppCompatActivity {
     Button cameraRoll;
     Button savePictureButton;
     ImageButton rotateBtn;
+    ImageButton homeButton;
     ImageView img;
     Bitmap bp = null;
     EditText teamNumberEnter;
@@ -58,6 +59,7 @@ public class PicturesMenu extends AppCompatActivity {
         cameraRoll = (Button) findViewById(R.id.cameraRollButton);
         savePictureButton = (Button) findViewById(R.id.savePicButton);
         rotateBtn = (ImageButton) findViewById(R.id.imageButton);
+        homeButton = (ImageButton) findViewById(R.id.Home);
         img = (ImageView) findViewById(R.id.imageView);
         teamNumberEnter = (EditText) findViewById(R.id.photoNumberEditText);
         Display display = getWindowManager().getDefaultDisplay();
@@ -96,6 +98,14 @@ public class PicturesMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 savePic();
+            }
+        });
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), Start_Menu.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
             }
         });
     }
@@ -200,16 +210,20 @@ public class PicturesMenu extends AppCompatActivity {
     public void savePic(){
         teamNumber = teamNumberEnter.getText().toString();
         ContentValues args = new ContentValues();
-            myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
-            if(fname != null) {
+        myDB = openOrCreateDatabase("FRC", MODE_PRIVATE, null);
+        if(fname != null) {
+            if(teamNumber.length() > 0 && teamNumber.length() <= 4) {
                 args.put("teamNumber", teamNumber);
                 args.put("pic1", fname);
                 myDB.insert("TeamPictures", null, args);
                 myDB.close();
                 Toast.makeText(getApplicationContext(), "Saved Picture!", Toast.LENGTH_SHORT).show();
-            }else {
-                Toast.makeText(getApplicationContext(), "Select a picture to save!", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(getApplicationContext(), "Please enter a valid team number!", Toast.LENGTH_SHORT).show();
             }
+        }else {
+            Toast.makeText(getApplicationContext(), "Select a picture to save!", Toast.LENGTH_SHORT).show();
+        }
     }
     public byte[] bitmapToByteArray(){
         byte[] byteArray = null;
@@ -223,7 +237,7 @@ public class PicturesMenu extends AppCompatActivity {
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        imageFileName = "JPEG_" + timeStamp + "_";
+        imageFileName = "JPEG_" + timeStamp + "_app";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = new File(
                 storageDir,

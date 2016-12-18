@@ -18,6 +18,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -39,14 +41,15 @@ public class UploadPicture extends AppCompatActivity {
     ProgressDialog dialog;
     TextView message;
     String teamNumber;
-    private String SERVER_URL = "http://www.gorohi.com/1323/data.php";
+    private String SERVER_URL = "http://www.gorohi.com/1323/picupload.php";
+    String m = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_picture);
         picUploadButton = (Button) findViewById(R.id.picUploadButton);
         picPreview = (ImageView) findViewById(R.id.picUploadPreview);
-
+        message = (TextView) findViewById(R.id.responseText);
         String[] columns = new String[]{
                 "_id",
                 "teamNumber",
@@ -154,13 +157,12 @@ public class UploadPicture extends AppCompatActivity {
                 connection.setRequestProperty("Connection", "Keep-Alive");
                 connection.setRequestProperty("ENCTYPE", "multipart/form-data");
                 connection.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
-                connection.setRequestProperty("uploaded_file", selectedFilePath);
-                connection.setRequestProperty("Name", teamNumber);
+                connection.setRequestProperty("fileToUpload", teamNumber + "." + fileName);
 
                 dataOutputStream = new DataOutputStream(connection.getOutputStream());
 
                 dataOutputStream.writeBytes(twoHyphens + boundary + lineEnd);
-                dataOutputStream.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\"" + selectedFilePath + "\"" + lineEnd);
+                dataOutputStream.writeBytes("Content-Disposition: form-data; name=\"fileToUpload\";filename=\"" + teamNumber + "." + fileName + "\"" + lineEnd);
 
                 dataOutputStream.writeBytes(lineEnd);
 
@@ -201,7 +203,7 @@ public class UploadPicture extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(UploadPicture.this, "File Not Found", Toast.LENGTH_SHORT).show();
+                        message.setText("File not found!");
                     }
                 });
             } catch (MalformedURLException e) {
